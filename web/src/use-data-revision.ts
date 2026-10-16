@@ -1,0 +1,2 @@
+import {useEffect,useState} from 'react';
+export function useDataRevision(){const [revision,setRevision]=useState(0);useEffect(()=>{const changed=()=>setRevision(x=>x+1);window.addEventListener('maidaan:data-changed',changed);window.addEventListener('maidaan:live-update',changed);window.addEventListener('focus',changed);return()=>{window.removeEventListener('maidaan:data-changed',changed);window.removeEventListener('maidaan:live-update',changed);window.removeEventListener('focus',changed)}},[]);return revision}

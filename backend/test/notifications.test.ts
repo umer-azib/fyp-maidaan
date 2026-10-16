@@ -1,0 +1,46 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync,readdirSync} from 'node:fs';
+import {PGlite} from '@electric-sql/pglite';
+import type {Database} from '../src/postgres';
+import {createApp} from '../src/app';
+import {applicationRouter} from '../src/application';
+test('transactional booking/game notifications, two web sessions, SSE, recipient isolation and read persistence',async()=>{
+ const {btree_gist}=await import('@electric-sql/pglite/contrib/btree_gist');const pg=new PGlite({extensions:{btree_gist}});
+ await pg.exec(`create role anon;create role authenticated;create schema auth;create table auth.users(id uuid primary key,email text,raw_user_meta_data jsonb default '{}');create function auth.uid() returns uuid language sql stable as $$select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid$$;create schema storage;create table storage.buckets(id text primary key,name text,public boolean,file_size_limit bigint,allowed_mime_types text[]);create table storage.objects(id uuid primary key default gen_random_uuid(),bucket_id text references storage.buckets,name text);alter table storage.objects enable row level security;create function storage.foldername(name text) returns text[] language sql immutable as $$select string_to_array(name,'/')$$;`);
+ for(const file of readdirSync('../supabase/migrations').filter(f=>/^2026101500(?:0[1-9]|10)_/.test(f)).sort())await pg.exec(readFileSync('../supabase/migrations/'+file,'utf8'));
+ const wrap=(engine:Pick<PGlite,'query'>):Database=>({query:async<T>(sql:string,values?:unknown[])=>({rows:(await engine.query<T>(sql,values)).rows}),transaction:async work=>work(wrap(engine))});const db:Database={...wrap(pg),transaction:work=>pg.transaction(tx=>work(wrap(tx)))};
+ const origin='http://127.0.0.1:5173';const app=createApp({publicDb:null,authenticate:async()=>{throw Error()}},[origin],applicationRouter(db,[origin]));const server=app.listen(0,'127.0.0.1');await new Promise<void>(resolve=>server.once('listening',resolve));const base='http://127.0.0.1:'+((server.address() as {port:number}).port)+'/v1';
+ const abortA=new AbortController(),abortB=new AbortController();
+ const request=async(path:string,method='GET',body?:unknown,cookie?:string)=>{const r=await fetch(base+path,{method,headers:{Origin:origin,'X-Maidaan-Client':'web','Content-Type':'application/json',...(cookie?{Cookie:cookie}:{})},body:body===undefined?undefined:JSON.stringify(body)});return {status:r.status,json:await r.json(),cookie:r.headers.get('set-cookie')?.split(';')[0]||''}};
+ try{
+  const account=(username:string)=>({name:username,username,email:username+'@example.test',password:'ValidPassword123!',confirmation:'ValidPassword123!'});
+  const a=await request('/auth/register','POST',account('notify_a')),b=await request('/auth/register','POST',account('notify_b'));assert.equal(a.status,200);assert.equal(b.status,200);
+  const v=await request('/hub/venues','POST',{name:'Notification test venue',businessName:'Test',ownerName:'Owner',description:'Local only',address:'Test Lahore address',cityId:'lahore',areaId:'lahore-dha-1',latitude:31.5,longitude:74.3,phone:'03001234567',facilities:[],confirmationMode:'instant'},a.cookie);assert.equal(v.status,201);
+  await db.query("update public.venues set approval_status='approved',published=true,verified=true where id=$1",[v.json.id]);
+  const c=await request('/hub/venues/'+v.json.id+'/courts','POST',{name:'Court',sport:'Padel',formats:['1v1']},a.cookie);
+  const hours=Array.from({length:7},(_,dayOfWeek)=>({dayOfWeek,opensAt:'08:00',closesAt:'23:00',slotMinutes:60,pricePkr:2000}));assert.equal((await request('/hub/courts/'+c.json.id+'/hours','PUT',hours,a.cookie)).status,200);
+  const date=new Date(Date.now()+2*86400000).toISOString().slice(0,10);const slots=await request('/courts/'+c.json.id+'/availability?date='+date);
+  const booking=await request('/bookings','POST',{courtId:c.json.id,startsAt:slots.json.slots[0].startsAt},a.cookie);assert.equal(booking.status,201);
+  const game=await request('/bookings/'+booking.json.id+'/game','POST',{title:'Two player notification test',description:'Local test',format:'1v1',maxPlayers:2,skill:'Intermediate',joinMode:'request',visibility:'public'},a.cookie);assert.equal(game.status,201);const gid=game.json.id;
+  assert.ok((await request('/games?cityId=lahore&sport=Padel&date='+date,'GET',undefined,b.cookie)).json.data.some((g:{id:string})=>g.id===gid));
+  const before=(await request('/notifications','GET',undefined,a.cookie)).json;const cursor=before.data[0]?.id||'0';
+  const streamA=await fetch(base+'/notifications/stream?after='+cursor,{headers:{Origin:origin,Cookie:a.cookie},signal:abortA.signal});assert.equal(streamA.status,200);assert.match(streamA.headers.get('content-type')||'',/event-stream/);const readerA=streamA.body!.getReader();
+  const streamB=await fetch(base+'/notifications/stream?after=0',{headers:{Origin:origin,Cookie:b.cookie},signal:abortB.signal});const readerB=streamB.body!.getReader();
+  const waitFor=async(reader:ReadableStreamDefaultReader<Uint8Array>,kind:string)=>{const timeout=AbortSignal.timeout(9000);let output='';while(!timeout.aborted){const next=await Promise.race([reader.read(),new Promise<never>((_,reject)=>timeout.addEventListener('abort',()=>reject(Error('SSE event timeout')),{once:true}))]);output+=new TextDecoder().decode(next.value);if(output.includes('"type":"'+kind+'"'))return output;}throw Error('SSE timeout')};
+  assert.equal((await request('/games/'+gid+'/actions','POST',{type:'join'},b.cookie)).status,200);
+  assert.match(await waitFor(readerA,'join_request'),/notify_b/);
+  assert.equal((await request('/games/'+gid+'/actions','POST',{type:'approve',playerId:b.json.userId},b.cookie)).status,403);
+  assert.equal((await request('/games/'+gid+'/actions','POST',{type:'reject',playerId:b.json.userId},a.cookie)).status,200);assert.ok((await request('/notifications','GET',undefined,b.cookie)).json.data.some((n:{type:string})=>n.type==='request_rejected'));
+  assert.equal((await request('/games/'+gid+'/actions','POST',{type:'join'},b.cookie)).status,200);
+  assert.equal((await request('/games/'+gid+'/actions','POST',{type:'approve',playerId:b.json.userId},a.cookie)).status,200);
+  await waitFor(readerB,'request_approved');
+  assert.equal((await request('/games/'+gid,'GET',undefined,b.cookie)).json.players.length,2);assert.equal((await request('/games/'+gid+'/actions','POST',{type:'join'},b.cookie)).status,409);
+  const hostNotifications=(await request('/notifications','GET',undefined,a.cookie)).json;const other=(await request('/notifications/'+hostNotifications.data[0].id+'/read','PATCH',{},b.cookie));assert.equal(other.status,404);
+  assert.equal((await request('/notifications/read-all','POST',{},b.cookie)).status,200);assert.equal((await request('/notifications','GET',undefined,b.cookie)).json.unreadCount,0);
+  assert.equal((await request('/games/'+gid+'/actions','POST',{type:'cancel'},a.cookie)).status,200);assert.ok((await request('/notifications','GET',undefined,b.cookie)).json.data.some((n:{type:string})=>n.type==='game_cancelled'));
+  assert.equal((await db.query<{status:string}>('select status from public.bookings where id=$1',[booking.json.id])).rows[0].status,'confirmed');
+  await request('/auth/logout','POST',{},b.cookie);const again=await request('/auth/login','POST',{identifier:'notify_b',password:'ValidPassword123!'});assert.ok((await request('/notifications','GET',undefined,again.cookie)).json.data.length>=3);
+  assert.equal((await request('/notifications')).status,401);
+ }finally{abortA.abort();abortB.abort();await new Promise<void>(resolve=>server.close(()=>resolve()));await pg.close()}
+});

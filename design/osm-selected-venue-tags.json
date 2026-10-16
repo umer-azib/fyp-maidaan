@@ -1,0 +1,526 @@
+[
+  {
+    "type": "way",
+    "id": 824901963,
+    "timestamp": "2026-06-19T17:36:36Z",
+    "version": 11,
+    "changeset": 184326156,
+    "user": "faraz_munj",
+    "uid": 76037,
+    "nodes": [
+      271055012,
+      271055011,
+      271055010,
+      271055009,
+      271055008,
+      7380266438,
+      7380266439,
+      271055007,
+      271055006,
+      271055005,
+      271055004,
+      271055003,
+      271055002,
+      271055001,
+      271055000,
+      271054999,
+      271054998,
+      271054997,
+      7380266436,
+      7380266435,
+      271054996,
+      271054994,
+      13952609816,
+      271054993,
+      271054992,
+      271054991,
+      7380427723,
+      7380427724,
+      271054990,
+      271054989,
+      271054988,
+      271054987,
+      271054986,
+      271054985,
+      271054984,
+      271054983,
+      271054982,
+      271054980,
+      271054979,
+      271054978,
+      271054977,
+      7380174327,
+      271054976,
+      271054975,
+      271054974,
+      271054973,
+      271054972,
+      271055013,
+      271055012
+    ],
+    "tags": {
+      "leisure": "stadium",
+      "name": "\u0642\u0630\u0627\u0641\u06cc \u0627\u0633\u0679\u06cc\u0688\u06cc\u0645",
+      "name:ar": "\u0645\u0644\u0639\u0628 \u0627\u0644\u0642\u0630\u0627\u0641\u064a",
+      "name:en": "Gaddafi stadium",
+      "name:es": "Estadio El Gadafi",
+      "name:hi": "\u0917\u0926\u094d\u0926\u093e\u092b\u0940 \u0938\u094d\u091f\u0947\u0921\u093f\u092f\u092e",
+      "name:ml": "\u0d17\u0d26\u0d4d\u0d26\u0d3e\u0d2b\u0d3f \u0d38\u0d4d\u0d31\u0d4d\u0d31\u0d47\u0d21\u0d3f\u0d2f\u0d02",
+      "name:ur": "\u0642\u0630\u0627\u0641\u06cc \u0627\u0633\u0679\u06cc\u0688\u06cc\u0645",
+      "operator": "\u067e\u0627\u06a9\u0633\u062a\u0627\u0646 \u06a9\u0631\u06a9\u0679 \u0628\u0648\u0631\u0688",
+      "sport": "cricket",
+      "wikidata": "Q1490881",
+      "wikimedia_commons": "Category:Gaddafi Stadium",
+      "wikipedia": "ur:\u0642\u0630\u0627\u0641\u06cc \u0627\u0633\u0679\u06cc\u0688\u06cc\u0645"
+    }
+  },
+  {
+    "type": "way",
+    "id": 27736338,
+    "timestamp": "2025-09-24T06:51:59Z",
+    "version": 7,
+    "changeset": 172376972,
+    "user": "tg4567",
+    "uid": 12500589,
+    "nodes": [
+      1828406556,
+      1828406604,
+      1828406599,
+      1828406574,
+      1828406549,
+      304575849,
+      304575850,
+      304575851,
+      304575511,
+      304575512,
+      304575513,
+      304575514,
+      1828406572,
+      1828406620,
+      304575515,
+      304575516,
+      304575517,
+      304575518,
+      304575519,
+      304575520,
+      304575522,
+      304575524,
+      304575525,
+      304575526,
+      304575527,
+      304575528,
+      304575529,
+      304575530,
+      304575531,
+      304575532,
+      304575533,
+      304575534,
+      304575535,
+      304575536,
+      304575537,
+      304575538,
+      1828406588,
+      1828406565,
+      1828406562,
+      1828406570,
+      1828406615,
+      1828406610,
+      1828406564,
+      1828406609,
+      1828406584,
+      1828406580,
+      1828406556
+    ],
+    "tags": {
+      "leisure": "stadium",
+      "name": "Punjab Stadium",
+      "sport": "soccer;athletics;kabaddi",
+      "start_date": "2003",
+      "wikidata": "Q2741438",
+      "wikimedia_commons": "Category:Punjab Stadium",
+      "wikipedia": "en:Punjab Stadium"
+    }
+  },
+  {
+    "type": "way",
+    "id": 905256566,
+    "timestamp": "2024-02-01T11:49:17Z",
+    "version": 2,
+    "changeset": 146942718,
+    "user": "Sami Ullah Khan",
+    "uid": 9059556,
+    "nodes": [
+      8406781944,
+      8406781945,
+      8406781946,
+      11576329008,
+      8406781944
+    ],
+    "tags": {
+      "leisure": "sports_centre",
+      "name": "LDA Sports Complex"
+    }
+  },
+  {
+    "type": "node",
+    "id": 14206757012,
+    "lat": 31.4556139,
+    "lon": 74.3814086,
+    "timestamp": "2026-09-22T16:32:32Z",
+    "version": 1,
+    "changeset": 189409396,
+    "user": "SurfTurtle",
+    "uid": 24515951,
+    "tags": {
+      "leisure": "pitch",
+      "name": "Pure Padel",
+      "sport": "padel;tennis"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1263659505,
+    "timestamp": "2024-03-18T07:59:36Z",
+    "version": 1,
+    "changeset": 148802849,
+    "user": "_Ahsan_Sarwar_",
+    "uid": 21212965,
+    "nodes": [
+      11740551264,
+      11740551265,
+      11740551266,
+      11740551267,
+      11740551264
+    ],
+    "tags": {
+      "leisure": "pitch",
+      "name": "Safari Villas Badminton Court",
+      "sport": "badminton"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1516148758,
+    "timestamp": "2026-05-18T10:14:34Z",
+    "version": 1,
+    "changeset": 182823386,
+    "user": "HamzaB93",
+    "uid": 24137279,
+    "nodes": [
+      13844101290,
+      13844101291,
+      13844101292,
+      13844101293,
+      13844101295,
+      13844101296,
+      13844101294,
+      13844101290
+    ],
+    "tags": {
+      "building": "yes",
+      "club": "sport",
+      "name": "Captain Fasih Babr Shaheed Sports Complex Phase 6 DHA Lahore",
+      "sport": "cricket"
+    }
+  },
+  {
+    "type": "way",
+    "id": 360108934,
+    "timestamp": "2026-04-08T05:50:23Z",
+    "version": 3,
+    "changeset": 181030785,
+    "user": "Qwertyuiopasd",
+    "uid": 23613497,
+    "nodes": [
+      3647095890,
+      3647095891,
+      3647095892,
+      3647103693,
+      3647095890
+    ],
+    "tags": {
+      "access": "permissive",
+      "alt_name": "MTFC",
+      "charge": "5000 PKR",
+      "fee": "yes",
+      "leisure": "pitch",
+      "lit": "yes",
+      "name": "Model Town Football Club",
+      "sport": "soccer;karate",
+      "surface": "grass"
+    }
+  },
+  {
+    "type": "way",
+    "id": 545111978,
+    "timestamp": "2017-12-06T22:12:27Z",
+    "version": 1,
+    "changeset": 54415917,
+    "user": "supremespicy",
+    "uid": 7155507,
+    "nodes": [
+      5268787509,
+      5268787510,
+      5268787511,
+      5268787512,
+      5268787509
+    ],
+    "tags": {
+      "leisure": "park",
+      "name": "DHA Phase V Sector L Football Ground"
+    }
+  },
+  {
+    "type": "way",
+    "id": 699369250,
+    "timestamp": "2019-06-24T09:40:47Z",
+    "version": 1,
+    "changeset": 71554676,
+    "user": "Amir Saleem",
+    "uid": 6984048,
+    "nodes": [
+      6567435921,
+      6567435922,
+      6567435923,
+      6567435924,
+      6567435921
+    ],
+    "tags": {
+      "leisure": "park",
+      "name": "Nadeem Football Club RA Bazaar"
+    }
+  },
+  {
+    "type": "way",
+    "id": 352416936,
+    "timestamp": "2017-06-15T10:59:05Z",
+    "version": 3,
+    "changeset": 49556177,
+    "user": "Imran999",
+    "uid": 5572758,
+    "nodes": [
+      3582192846,
+      3582192847,
+      3582192855,
+      3582197407,
+      3582192854,
+      3582192853,
+      3582192852,
+      3582197406,
+      3582192851,
+      3582192850,
+      3582192849,
+      3582192848,
+      3582192846
+    ],
+    "tags": {
+      "addr:city": "Lahore",
+      "addr:street": "Usmani Road",
+      "leisure": "pitch",
+      "name": "Punjab University Football Ground"
+    }
+  },
+  {
+    "type": "relation",
+    "id": 20584922,
+    "timestamp": "2026-04-24T17:39:14Z",
+    "version": 1,
+    "changeset": 181776619,
+    "user": "faraz_munj",
+    "uid": 76037,
+    "members": [
+      {
+        "type": "way",
+        "ref": 405834559,
+        "role": "outer"
+      },
+      {
+        "type": "way",
+        "ref": 1503411538,
+        "role": "inner"
+      }
+    ],
+    "tags": {
+      "leisure": "sports_centre",
+      "name": "Gao Shala Sports Centre",
+      "sport": "cricket;football;swimming",
+      "type": "multipolygon"
+    }
+  },
+  {
+    "type": "way",
+    "id": 705043448,
+    "timestamp": "2019-07-17T07:21:55Z",
+    "version": 1,
+    "changeset": 72333591,
+    "user": "Tamkeen Rana",
+    "uid": 6990539,
+    "nodes": [
+      6621930047,
+      6621930048,
+      6621930049,
+      6621930050,
+      6621930047
+    ],
+    "tags": {
+      "leisure": "sports_centre",
+      "name": "WAPDA Sports Complex"
+    }
+  },
+  {
+    "type": "way",
+    "id": 316615261,
+    "timestamp": "2019-02-10T02:15:31Z",
+    "version": 2,
+    "changeset": 67062706,
+    "user": "dmgroom_ct",
+    "uid": 437598,
+    "nodes": [
+      3227487622,
+      3227487623,
+      3227487624,
+      3227487625,
+      3227487626,
+      3227487622
+    ],
+    "tags": {
+      "leisure": "park",
+      "name": "Ittefaq Cricket Ground"
+    }
+  },
+  {
+    "type": "way",
+    "id": 618370859,
+    "timestamp": "2026-02-11T16:04:38Z",
+    "version": 4,
+    "changeset": 178413594,
+    "user": "MappingMore",
+    "uid": 20144444,
+    "nodes": [
+      6120880576,
+      5844894796,
+      5844894797,
+      6120880985,
+      6120880584,
+      6120880583,
+      6120880582,
+      6120880581,
+      6120880580,
+      6120880579,
+      6120880576
+    ],
+    "tags": {
+      "leisure": "pitch",
+      "name": "Sabsazar Cricket Stadium",
+      "sport": "cricket"
+    }
+  },
+  {
+    "type": "way",
+    "id": 234077332,
+    "timestamp": "2014-02-17T21:25:40Z",
+    "version": 2,
+    "changeset": 20624819,
+    "user": "maggot27",
+    "uid": 118021,
+    "nodes": [
+      2423835155,
+      2423835157,
+      2423835159,
+      2423835161,
+      2423835163,
+      2423835165,
+      2423835167,
+      2423835169,
+      2423835171,
+      2423835172,
+      2423835174,
+      2423835176,
+      2423835178,
+      2423835180,
+      2423835182,
+      2423835184,
+      2423835186,
+      2423835188,
+      2423835190,
+      2423835192,
+      2423835155
+    ],
+    "tags": {
+      "leisure": "stadium",
+      "name": "Railway Stadium"
+    }
+  },
+  {
+    "type": "way",
+    "id": 316615260,
+    "timestamp": "2016-09-14T06:13:18Z",
+    "version": 2,
+    "changeset": 42141265,
+    "user": "ahmdsaleem",
+    "uid": 4574017,
+    "nodes": [
+      3227487618,
+      3227487619,
+      3227487620,
+      3227487621,
+      3227487618
+    ],
+    "tags": {
+      "leisure": "stadium",
+      "name": "sports complex",
+      "name:en": "sports complex"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1012000224,
+    "timestamp": "2021-12-14T08:17:07Z",
+    "version": 2,
+    "changeset": 114911962,
+    "user": "Rameen Samir Qazi",
+    "uid": 14630689,
+    "nodes": [
+      7436821585,
+      9336635125,
+      9336635126,
+      9336635127,
+      9336654931,
+      9336635128,
+      9336635129,
+      7436817880,
+      7436817881,
+      7436817882,
+      7436817883,
+      7436821585
+    ],
+    "tags": {
+      "addr:city": "Lahore",
+      "addr:postcode": "54660",
+      "addr:street": "Javed Iqbal Street",
+      "leisure": "park",
+      "name": "Football League Practice Ground",
+      "opening_hours": "24/7"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1383726982,
+    "timestamp": "2025-05-05T09:39:36Z",
+    "version": 1,
+    "changeset": 165836033,
+    "user": "The Ewil Dewil",
+    "uid": 21284767,
+    "nodes": [
+      12811309993,
+      12811309994,
+      12811309995,
+      12811309996,
+      12811309993
+    ],
+    "tags": {
+      "leisure": "park",
+      "name": "Badminton Court"
+    }
+  }
+]

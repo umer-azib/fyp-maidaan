@@ -1,0 +1,12 @@
+import {useEffect,useState} from 'react';
+import {Linking} from 'react-native';
+import {router,useLocalSearchParams} from 'expo-router';
+import {Screen,Choices,Button,Panel,T} from './components/maidaan-ui';
+import {LocationPicker,RequirePlayer} from './live';
+import {useGames} from './store';
+import VenueMap from './venue-map';
+import type {Page,Venue} from '../../shared/contracts';
+import {directions,distanceKm} from '../../shared/maps';
+import {sports} from '../../shared/tokens';
+function Map(){const {api,location}=useGames(),{venue}=useLocalSearchParams<{venue?:string}>();const [venues,setVenues]=useState<Venue[]>([]),[sport,setSport]=useState('All sports'),[view,setView]=useState('Map'),[error,setError]=useState('');useEffect(()=>{let active=true;const query=new URLSearchParams({cityId:location.cityId,pageSize:'50',...(location.areaId?{areaId:location.areaId}:{}),...(sport!=='All sports'?{sport}:{}),...(location.latitude!==undefined?{latitude:String(location.latitude),longitude:String(location.longitude),radiusKm:String(location.radiusKm||20)}:{})});api.request<Page<Venue>>('/venues?'+query).then(p=>{if(active)setVenues(p.data)}).catch(e=>{if(active)setError(e.message)});return()=>{active=false}},[api,location,sport]);const sorted=location.latitude===undefined?venues:[...venues].sort((a,b)=>distanceKm({latitude:location.latitude!,longitude:location.longitude!},a)-distanceKm({latitude:location.latitude!,longitude:location.longitude!},b));return <Screen title="Find your court." eyebrow="LAHORE, ON THE MAP"><LocationPicker/><Choices values={['Map','List']} value={view} onChange={setView}/><Choices values={['All sports',...sports]} value={sport} onChange={setSport}/>{!!error&&<T>{error}</T>}{view==='Map'?<VenueMap venues={sorted} selected={venue} onAction={(type,id)=>{const v=venues.find(v=>v.id===id);if(!v)return;if(type==='venue')router.push({pathname:'/venue/[id]',params:{id}});else void Linking.openURL(directions(v.latitude,v.longitude))}}/>:sorted.map(v=><Panel key={v.id}><T style={{fontWeight:'700',fontSize:20}}>{v.name}</T><T>{v.address}</T><T muted>{v.sports.join(' / ')||'Sports not verified'}</T>{v.source==='directory'&&<T muted>Real public location / FYP management only / no booking inventory</T>}<Button onPress={()=>router.push({pathname:'/venue/[id]',params:{id:v.id}})}>View Venue</Button></Panel>)}<T muted style={{fontSize:10}}>OpenStreetMap contributors / ODbL. No offline tile downloads.</T></Screen>}
+export function MapScreen(){return <RequirePlayer><Map/></RequirePlayer>}

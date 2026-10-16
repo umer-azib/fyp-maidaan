@@ -1,0 +1,15 @@
+node_modules/
+.npm-cache/
+web/router.tgz
+web/dist/
+mobile/dist/
+mobile/.expo/
+*.log
+.env
+.env.*
+!.env.example
+backend/dist/
+design/*.fig
+design/screenshots/
+design/ui-audit/
+docs/ui-qa/

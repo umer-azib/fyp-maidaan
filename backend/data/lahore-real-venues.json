@@ -1,0 +1,400 @@
+[
+  {
+    "sourceId": "osm:way:824901963",
+    "name": "Gaddafi Stadium",
+    "area": "Gulberg",
+    "address": "Hafeez Kardar Road, Lahore",
+    "latitude": 31.5133615,
+    "longitude": 74.3334644,
+    "sports": [
+      "Cricket"
+    ],
+    "category": "stadium",
+    "website": "https://www.pcb.com.pk/event.html?tag=Gaddafi+Stadium",
+    "phone": null,
+    "openingHours": null,
+    "sources": [
+      "https://www.openstreetmap.org/way/824901963",
+      "https://www.pcb.com.pk/event.html?tag=Gaddafi+Stadium"
+    ],
+    "verifiedAt": "2026-10-16T00:20:28.167643+00:00",
+    "coordinateBasis": "OSM/Nominatim mapped feature representative point",
+    "originalName": "\u0642\u0630\u0627\u0641\u06cc \u0627\u0633\u0679\u06cc\u0688\u06cc\u0645"
+  },
+  {
+    "sourceId": "osm:way:27736338",
+    "name": "Punjab Stadium",
+    "area": "Gulberg",
+    "address": "Hafeez Kardar Road, Lahore",
+    "latitude": 31.5107139,
+    "longitude": 74.3319583,
+    "sports": [
+      "Football"
+    ],
+    "category": "stadium",
+    "website": null,
+    "phone": null,
+    "openingHours": null,
+    "sources": [
+      "https://www.openstreetmap.org/way/27736338"
+    ],
+    "verifiedAt": "2026-10-16T00:20:28.167763+00:00",
+    "coordinateBasis": "OSM/Nominatim mapped feature representative point",
+    "originalName": "Punjab Stadium"
+  },
+  {
+    "sourceId": "osm:way:905256566",
+    "name": "LDA Sports Complex Gulberg",
+    "area": "Gulberg",
+    "address": "Gurumangat Road, Lahore",
+    "latitude": 31.512458,
+    "longitude": 74.358681,
+    "sports": [
+      "Badminton"
+    ],
+    "category": "sports_centre",
+    "website": "https://lsc.org.pk/gulberg",
+    "phone": null,
+    "openingHours": null,
+    "sources": [
+      "https://www.openstreetmap.org/way/905256566",
+      "https://lsc.org.pk/gulberg"
+    ],
+    "verifiedAt": "2026-10-16T00:20:28.167776+00:00",
+    "coordinateBasis": "OSM/Nominatim mapped feature representative point",
+    "originalName": "LDA Sports Complex"
+  },
+  {
+    "sourceId": "osm:node:14206757012",
+    "name": "Pure Padel",
+    "area": "Punjab Cooperative Housing Society",
+    "address": "Street 17, Sector KK, Punjab Cooperative Housing Society, Lahore",
+    "latitude": 31.4556139,
+    "longitude": 74.3814086,
+    "sports": [
+      "Padel"
+    ],
+    "category": "pitch",
+    "website": null,
+    "phone": null,
+    "openingHours": null,
+    "sources": [
+      "https://www.openstreetmap.org/node/14206757012"
+    ],
+    "verifiedAt": "2026-10-16T00:20:28.167787+00:00",
+    "coordinateBasis": "OSM/Nominatim mapped feature representative point",
+    "originalName": "Pure Padel"
+  },
+  {
+    "sourceId": "osm:way:1263659505",
+    "name": "Safari Villas Badminton Court",
+    "area": "Bahria Town",
+    "address": "Major Aziz Bhatti Avenue, Safari Villas, Bahria Town, Lahore",
+    "latitude": 31.3868053,
+    "longitude": 74.1951824,
+    "sports": [
+      "Badminton"
+    ],
+    "category": "pitch",
+    "website": null,
+    "phone": null,
+    "openingHours": null,
+    "sources": [
+      "https://www.openstreetmap.org/way/1263659505"
+    ],
+    "verifiedAt": "2026-10-16T00:20:28.167795+00:00",
+    "coordinateBasis": "OSM/Nominatim mapped feature representative point",
+    "originalName": "Safari Villas Badminton Court"
+  },
+  {
+    "sourceId": "osm:way:1516148758",
+    "name": "Captain Fasih Babr Shaheed Sports Complex Phase 6 DHA Lahore",
+    "area": "DHA Phase 6",
+    "address": "Avenue 6, DHA Phase 6, Lahore",
+    "latitude": 31.4674704,
+    "longitude": 74.4433305,
+    "sports": [
+      "Cricket"
+    ],
+    "category": "sport",
+    "website": null,
+    "phone": null,
+    "openingHours": null,
+    "sources": [
+      "https://www.openstreetmap.org/way/1516148758"
+    ],
+    "verifiedAt": "2026-10-16T00:20:28.167804+00:00",
+    "coordinateBasis": "OSM/Nominatim mapped feature representative point",
+    "originalName": "Captain Fasih Babr Shaheed Sports Complex Phase 6 DHA Lahore"
+  },
+  {
+    "sourceId": "osm:way:360108934",
+    "name": "Model Town Football Club",
+    "area": "Model Town",
+    "address": "North Avenue, Model Town Block D, Lahore",
+    "latitude": 31.4931805,
+    "longitude": 74.3226731,
+    "sports": [
+      "Football"
+    ],
+    "category": "pitch",
+    "website": null,
+    "phone": null,
+    "openingHours": null,
+    "sources": [
+      "https://www.openstreetmap.org/way/360108934"
+    ],
+    "verifiedAt": "2026-10-16T00:20:28.167814+00:00",
+    "coordinateBasis": "OSM/Nominatim mapped feature representative point",
+    "originalName": "Model Town Football Club"
+  },
+  {
+    "sourceId": "osm:way:545111978",
+    "name": "DHA Phase V Sector L Football Ground",
+    "area": "DHA Phase 5",
+    "address": "Sector L, DHA Phase V, Lahore",
+    "latitude": 31.4616132,
+    "longitude": 74.4008155,
+    "sports": [
+      "Football"
+    ],
+    "category": "park",
+    "website": null,
+    "phone": null,
+    "openingHours": null,
+    "sources": [
+      "https://www.openstreetmap.org/way/545111978"
+    ],
+    "verifiedAt": "2026-10-16T00:20:28.167826+00:00",
+    "coordinateBasis": "OSM/Nominatim mapped feature representative point",
+    "originalName": "DHA Phase V Sector L Football Ground"
+  },
+  {
+    "sourceId": "osm:way:699369250",
+    "name": "Nadeem Football Club RA Bazaar",
+    "area": "Cantt",
+    "address": "RA Bazaar, Lahore Cantt",
+    "latitude": 31.5046457,
+    "longitude": 74.3851359,
+    "sports": [
+      "Football"
+    ],
+    "category": "park",
+    "website": null,
+    "phone": null,
+    "openingHours": null,
+    "sources": [
+      "https://www.openstreetmap.org/way/699369250"
+    ],
+    "verifiedAt": "2026-10-16T00:20:28.167834+00:00",
+    "coordinateBasis": "OSM/Nominatim mapped feature representative point",
+    "originalName": "Nadeem Football Club RA Bazaar"
+  },
+  {
+    "sourceId": "osm:way:352416936",
+    "name": "Punjab University Football Ground",
+    "area": "Garden Town",
+    "address": "Usmani Road, Punjab University, Lahore",
+    "latitude": 31.4995631,
+    "longitude": 74.3126471,
+    "sports": [
+      "Football"
+    ],
+    "category": "pitch",
+    "website": "https://pu.edu.pk/page/facility/sports.html",
+    "phone": null,
+    "openingHours": null,
+    "sources": [
+      "https://www.openstreetmap.org/way/352416936",
+      "https://pu.edu.pk/page/facility/sports.html"
+    ],
+    "verifiedAt": "2026-10-16T00:20:28.167842+00:00",
+    "coordinateBasis": "OSM/Nominatim mapped feature representative point",
+    "originalName": "Punjab University Football Ground"
+  },
+  {
+    "sourceId": "osm:relation:20584922",
+    "name": "Gao Shala Sports Centre",
+    "area": "Qasurpura",
+    "address": "Bund Road, Qasurpura, Lahore",
+    "latitude": 31.6039355,
+    "longitude": 74.2961018,
+    "sports": [
+      "Cricket",
+      "Football"
+    ],
+    "category": "sports_centre",
+    "website": null,
+    "phone": null,
+    "openingHours": null,
+    "sources": [
+      "https://www.openstreetmap.org/relation/20584922"
+    ],
+    "verifiedAt": "2026-10-16T00:20:28.167850+00:00",
+    "coordinateBasis": "OSM/Nominatim mapped feature representative point",
+    "originalName": "Gao Shala Sports Centre"
+  },
+  {
+    "sourceId": "osm:way:705043448",
+    "name": "WAPDA Sports Complex",
+    "area": "Kot Lakhpat",
+    "address": "WAPDA Colony, Defence Road, Kot Lakhpat, Lahore",
+    "latitude": 31.4467859,
+    "longitude": 74.3526716,
+    "sports": [],
+    "category": "sports_centre",
+    "website": "https://wapda.gov.pk/sports-2/",
+    "phone": null,
+    "openingHours": null,
+    "sources": [
+      "https://www.openstreetmap.org/way/705043448",
+      "https://wapda.gov.pk/sports-2/"
+    ],
+    "verifiedAt": "2026-10-16T00:20:28.167859+00:00",
+    "coordinateBasis": "OSM/Nominatim mapped feature representative point",
+    "originalName": "WAPDA Sports Complex"
+  },
+  {
+    "sourceId": "osm:way:316615261",
+    "name": "Ittefaq Cricket Ground",
+    "area": "Model Town",
+    "address": "Model Town, Lahore",
+    "latitude": 31.475362,
+    "longitude": 74.3405906,
+    "sports": [
+      "Cricket"
+    ],
+    "category": "park",
+    "website": null,
+    "phone": null,
+    "openingHours": null,
+    "sources": [
+      "https://www.openstreetmap.org/way/316615261"
+    ],
+    "verifiedAt": "2026-10-16T00:20:28.167872+00:00",
+    "coordinateBasis": "OSM/Nominatim mapped feature representative point",
+    "originalName": "Ittefaq Cricket Ground"
+  },
+  {
+    "sourceId": "osm:way:618370859",
+    "name": "Sabsazar Cricket Stadium",
+    "area": "Sabzazar",
+    "address": "Sabsazar Road, Lahore",
+    "latitude": 31.519113,
+    "longitude": 74.2679061,
+    "sports": [
+      "Cricket"
+    ],
+    "category": "pitch",
+    "website": null,
+    "phone": null,
+    "openingHours": null,
+    "sources": [
+      "https://www.openstreetmap.org/way/618370859"
+    ],
+    "verifiedAt": "2026-10-16T00:20:28.167881+00:00",
+    "coordinateBasis": "OSM/Nominatim mapped feature representative point",
+    "originalName": "Sabsazar Cricket Stadium"
+  },
+  {
+    "sourceId": "osm:way:234077332",
+    "name": "Railway Stadium",
+    "area": "Garhi Shahu",
+    "address": "Mughalpura Road, Garhi Shahu, Lahore",
+    "latitude": 31.5656039,
+    "longitude": 74.3506557,
+    "sports": [],
+    "category": "stadium",
+    "website": null,
+    "phone": null,
+    "openingHours": null,
+    "sources": [
+      "https://www.openstreetmap.org/way/234077332"
+    ],
+    "verifiedAt": "2026-10-16T00:20:28.167889+00:00",
+    "coordinateBasis": "OSM/Nominatim mapped feature representative point",
+    "originalName": "Railway Stadium"
+  },
+  {
+    "sourceId": "osm:way:316615260",
+    "name": "Sports Complex (Johar Town)",
+    "area": "Johar Town",
+    "address": "Khayaban-e-Firdousi, Johar Town, Lahore",
+    "latitude": 31.4581688,
+    "longitude": 74.2817327,
+    "sports": [],
+    "category": "stadium",
+    "website": null,
+    "phone": null,
+    "openingHours": null,
+    "sources": [
+      "https://www.openstreetmap.org/way/316615260"
+    ],
+    "verifiedAt": "2026-10-16T00:20:28.167896+00:00",
+    "coordinateBasis": "OSM/Nominatim mapped feature representative point",
+    "originalName": "sports complex"
+  },
+  {
+    "sourceId": "osm:way:1012000224",
+    "name": "Football League Practice Ground",
+    "area": "Gulberg",
+    "address": "Javed Iqbal Street, Gulberg, Lahore",
+    "latitude": 31.5202509,
+    "longitude": 74.3532493,
+    "sports": [
+      "Football"
+    ],
+    "category": "park",
+    "website": null,
+    "phone": null,
+    "openingHours": null,
+    "sources": [
+      "https://www.openstreetmap.org/way/1012000224"
+    ],
+    "verifiedAt": "2026-10-16T00:20:28.167903+00:00",
+    "coordinateBasis": "OSM/Nominatim mapped feature representative point",
+    "originalName": "Football League Practice Ground"
+  },
+  {
+    "sourceId": "osm:way:1383726982",
+    "name": "Badminton Court (Saddar)",
+    "area": "Cantt",
+    "address": "Saddar, Lahore Cantt",
+    "latitude": 31.5438192,
+    "longitude": 74.3831301,
+    "sports": [
+      "Badminton"
+    ],
+    "category": "park",
+    "website": null,
+    "phone": null,
+    "openingHours": null,
+    "sources": [
+      "https://www.openstreetmap.org/way/1383726982"
+    ],
+    "verifiedAt": "2026-10-16T00:20:28.167912+00:00",
+    "coordinateBasis": "OSM/Nominatim mapped feature representative point",
+    "originalName": "Badminton Court"
+  },
+  {
+    "sourceId": "official:casadepadel.pk:dha5",
+    "name": "Casa de Padel",
+    "area": "DHA Phase 5",
+    "address": "DHA Phase 5, Lahore",
+    "latitude": 31.4566094,
+    "longitude": 74.4197187,
+    "sports": [
+      "Padel"
+    ],
+    "category": "padel facility",
+    "website": "https://casadepadel.pk/",
+    "phone": null,
+    "openingHours": null,
+    "sources": [
+      "https://casadepadel.pk/"
+    ],
+    "verifiedAt": "2026-10-16T00:20:28.167918+00:00",
+    "coordinateBasis": "Coordinates explicitly embedded in the official venue website map; no Google listing scraped",
+    "originalName": "Casa de Padel"
+  }
+]

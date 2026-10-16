@@ -1,0 +1,91 @@
+{
+  "checks": [
+    {
+      "name": "booking",
+      "value": {
+        "status": 201,
+        "id": "095684f9-de46-4e4a-8338-ec5ce92e2e3c",
+        "state": "confirmed"
+      }
+    },
+    {
+      "name": "game",
+      "value": {
+        "status": 201,
+        "id": "ce89eaef-9c70-45f7-b155-8ab96c5d9322"
+      }
+    },
+    {
+      "name": "discovery",
+      "value": true
+    },
+    {
+      "name": "request",
+      "value": 200
+    },
+    {
+      "name": "host live request",
+      "value": true
+    },
+    {
+      "name": "unauthorized approval",
+      "value": 403
+    },
+    {
+      "name": "reject",
+      "value": 200
+    },
+    {
+      "name": "guest live rejection",
+      "value": true
+    },
+    {
+      "name": "request again",
+      "value": 200
+    },
+    {
+      "name": "approve",
+      "value": 200
+    },
+    {
+      "name": "guest live approval",
+      "value": true
+    },
+    {
+      "name": "lineup A",
+      "value": 2
+    },
+    {
+      "name": "lineup B",
+      "value": 2
+    },
+    {
+      "name": "duplicate full join",
+      "value": 409
+    },
+    {
+      "name": "court occupied",
+      "value": true
+    },
+    {
+      "name": "cancel game",
+      "value": 200
+    },
+    {
+      "name": "guest live cancellation",
+      "value": true
+    },
+    {
+      "name": "notifications after relogin",
+      "value": [
+        "game_cancelled",
+        "request_approved",
+        "request_rejected"
+      ]
+    },
+    {
+      "name": "unauth notifications",
+      "value": 401
+    }
+  ]
+}

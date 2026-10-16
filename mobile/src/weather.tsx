@@ -1,0 +1,6 @@
+import {useEffect,useState} from 'react';
+import {useGames} from './store';
+import {Panel,T,Button} from './components/maidaan-ui';
+import type {WeatherReport} from '../../shared/assistant';
+import {pakistanTime} from '../../shared/account-client';
+export function NativeWeather({gameId}:{gameId?:string}){const {api,demoSession}=useGames();const [data,setData]=useState<WeatherReport|null>(null),[error,setError]=useState(''),[dismissed,setDismissed]=useState(false);useEffect(()=>{let active=true;if(demoSession)return;api.request<WeatherReport>('/weather'+(gameId?'?gameId='+gameId:'')).then(d=>{if(active)setData(d)}).catch(e=>{if(active)setError(e.message)});return()=>{active=false}},[api,demoSession,gameId]);if(demoSession)return null;return <Panel><T style={{fontWeight:'700'}}>{gameId?'Game forecast':'Lahore weather'}</T>{error?<T muted>{error}</T>:!data?<T muted>Loading forecast...</T>:data.point?<><T>{data.point.conditions} / {data.point.temperatureC} C</T><T muted>Rain {data.point.rainProbability===null?'unavailable':data.point.rainProbability+'%'} / Wind {data.point.windKph} km/h</T><T muted style={{fontSize:11}}>{pakistanTime(data.point.at)} / Open-Meteo</T></>:<T>{data.message}</T>}{data?.warning&&!dismissed&&<><T>{data.warning}</T><Button secondary onPress={()=>setDismissed(true)}>Dismiss weather warning</Button></>}</Panel>}

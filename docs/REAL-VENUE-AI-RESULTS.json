@@ -1,0 +1,86 @@
+[
+  {
+    "message": "Show badminton venues in Lahore",
+    "status": 200,
+    "data": {
+      "answer": "Found 5 matching venues. Times are Pakistan Standard Time. Open a result to confirm details.",
+      "filters": {
+        "intent": "venues",
+        "sport": "Badminton",
+        "area": null,
+        "date": null,
+        "time": null,
+        "period": null
+      },
+      "cards": [
+        {
+          "kind": "venue",
+          "directoryOnly": true,
+          "id": "aff44e8e-73a0-4173-86a4-8b73d53146e9",
+          "title": "Badminton Court (Saddar)",
+          "subtitle": "Saddar, Lahore Cantt",
+          "developmentFixture": false
+        },
+        {
+          "kind": "venue",
+          "directoryOnly": true,
+          "id": "5377b674-cb38-4ec3-8a09-ed49dbc6e1aa",
+          "title": "LDA Sports Complex Gulberg",
+          "subtitle": "Gurumangat Road, Lahore",
+          "developmentFixture": false
+        },
+        {
+          "kind": "venue",
+          "directoryOnly": false,
+          "id": "1dbfd1bb-ca62-4767-8b61-5e0ba921f05f",
+          "title": "Monsoon Shuttle Club (Development fixture)",
+          "subtitle": "Illustrative neighborhood location, Wapda Town, Lahore (not a real premises address)",
+          "developmentFixture": true
+        },
+        {
+          "kind": "venue",
+          "directoryOnly": true,
+          "id": "14c3aba2-cfd8-42d1-8cff-3a0d26ec192d",
+          "title": "Safari Villas Badminton Court",
+          "subtitle": "Major Aziz Bhatti Avenue, Safari Villas, Bahria Town, Lahore",
+          "developmentFixture": false
+        },
+        {
+          "kind": "venue",
+          "directoryOnly": false,
+          "id": "ac377d48-4f5a-4749-8b9b-3fd507991246",
+          "title": "Willow Shuttle House (Development fixture)",
+          "subtitle": "Illustrative neighborhood location, Gulberg, Lahore (not a real premises address)",
+          "developmentFixture": true
+        }
+      ],
+      "searchedAt": "2026-10-16T00:56:37.618Z"
+    }
+  },
+  {
+    "message": "Show padel venues near DHA Lahore",
+    "status": 200,
+    "data": {
+      "answer": "Found 1 matching venues. Times are Pakistan Standard Time. Open a result to confirm details.",
+      "filters": {
+        "intent": "venues",
+        "sport": "Padel",
+        "area": "DHA",
+        "date": null,
+        "time": null,
+        "period": null
+      },
+      "cards": [
+        {
+          "kind": "venue",
+          "directoryOnly": true,
+          "id": "d5db4272-1b1a-46f3-813f-f41e7271ea4c",
+          "title": "Casa de Padel",
+          "subtitle": "DHA Phase 5, Lahore",
+          "developmentFixture": false
+        }
+      ],
+      "searchedAt": "2026-10-16T00:56:39.927Z"
+    }
+  }
+]

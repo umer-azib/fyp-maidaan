@@ -1,0 +1,5 @@
+import {Linking} from 'react-native';
+import {WebView} from 'react-native-webview';
+import {mapHtml} from './map-html';
+import type {Venue} from '../../shared/contracts';
+export default function VenueMap({venues,selected,onAction}:{venues:Venue[];selected?:string;onAction:(type:string,id:string)=>void}){return <WebView style={{height:440,flex:0,borderRadius:20}} source={{html:mapHtml(venues,selected),baseUrl:'https://maidaan.invalid/'}} originWhitelist={['*']} userAgent="MaidaanFYP/1.0 OpenStreetMap interactive map" cacheEnabled mixedContentMode="never" javaScriptCanOpenWindowsAutomatically={false} setSupportMultipleWindows={false} onShouldStartLoadWithRequest={r=>{if(r.url==='https://www.openstreetmap.org/copyright'){void Linking.openURL(r.url);return false}return r.url==='about:blank'||r.url==='https://maidaan.invalid/'}} onMessage={e=>{try{const data=JSON.parse(e.nativeEvent.data);if(['venue','directions'].includes(data.type)&&venues.some(v=>v.id===data.id))onAction(data.type,data.id)}catch{/* Ignore malformed bridge messages. */}}}/>}

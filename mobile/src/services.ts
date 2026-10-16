@@ -1,0 +1,12 @@
+import 'react-native-url-polyfill/auto';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
+import { Platform } from 'react-native';
+import { createApi } from '../../shared/api';
+import { createAccountClient } from '../../shared/account-client';
+import { createDemoAuth, demoEnabledFor } from '../../shared/demo-auth';
+export const demoAuth=createDemoAuth(demoEnabledFor(__DEV__,process.env.EXPO_PUBLIC_ENABLE_DEMO_AUTH),AsyncStorage);
+const tokens={getItem:SecureStore.getItemAsync,setItem:SecureStore.setItemAsync,removeItem:SecureStore.deleteItemAsync};
+export const api=createApi(process.env.EXPO_PUBLIC_API_URL||'',async()=>{demoAuth.assertLiveAccess();return Platform.OS==='web'?undefined:(await tokens.getItem('maidaan:account-token'))||undefined},Platform.OS==='web'?'web':'mobile');
+export const accountAuth=createAccountClient(api,Platform.OS==='web'?undefined:tokens);
+export const configured=!!process.env.EXPO_PUBLIC_API_URL;

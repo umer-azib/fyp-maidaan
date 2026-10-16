@@ -1,0 +1,36 @@
+[
+  {
+    "name": "Stored fixture court booking",
+    "status": 201,
+    "id": "22f6c491-451f-41e3-9ba2-d0d9b21b38d0"
+  },
+  {
+    "name": "Game created",
+    "status": 201,
+    "id": "e2485b75-ff0c-40af-bc8a-8deed5f3c5d9"
+  },
+  {
+    "name": "Host SSE request",
+    "status": 200,
+    "received": true
+  },
+  {
+    "name": "Guest SSE approval",
+    "status": 200,
+    "received": true
+  },
+  {
+    "name": "Both lineups",
+    "status": 200,
+    "players": 2
+  },
+  {
+    "name": "Owner sees actual reservation",
+    "status": 200,
+    "bookingId": "22f6c491-451f-41e3-9ba2-d0d9b21b38d0"
+  },
+  {
+    "name": "Game canceled; reservation retained",
+    "status": 200
+  }
+]

@@ -1,0 +1,326 @@
+[
+  {
+    "name": "Public real venue directory",
+    "status": 200,
+    "count": 19,
+    "venues": [
+      {
+        "id": "aff44e8e-73a0-4173-86a4-8b73d53146e9",
+        "name": "Badminton Court (Saddar)",
+        "latitude": 31.5438192,
+        "longitude": 74.3831301,
+        "source": "directory",
+        "sports": [
+          "Badminton"
+        ],
+        "courts": 0,
+        "ownerVerified": false
+      },
+      {
+        "id": "9d0ca4dc-9fb8-4b03-897f-bfd4f961acc1",
+        "name": "Captain Fasih Babr Shaheed Sports Complex Phase 6 DHA Lahore",
+        "latitude": 31.4674704,
+        "longitude": 74.4433305,
+        "source": "directory",
+        "sports": [
+          "Cricket"
+        ],
+        "courts": 0,
+        "ownerVerified": false
+      },
+      {
+        "id": "d5db4272-1b1a-46f3-813f-f41e7271ea4c",
+        "name": "Casa de Padel",
+        "latitude": 31.4566094,
+        "longitude": 74.4197187,
+        "source": "directory",
+        "sports": [
+          "Padel"
+        ],
+        "courts": 0,
+        "ownerVerified": false
+      },
+      {
+        "id": "f0da0e25-d50f-44f9-84b8-30f19c2dbefe",
+        "name": "DHA Phase V Sector L Football Ground",
+        "latitude": 31.4616132,
+        "longitude": 74.4008155,
+        "source": "directory",
+        "sports": [
+          "Football"
+        ],
+        "courts": 0,
+        "ownerVerified": false
+      },
+      {
+        "id": "fccbb000-ffe0-4f01-8acc-1c27f473d26a",
+        "name": "Football League Practice Ground",
+        "latitude": 31.5202509,
+        "longitude": 74.3532493,
+        "source": "directory",
+        "sports": [
+          "Football"
+        ],
+        "courts": 0,
+        "ownerVerified": false
+      },
+      {
+        "id": "e0f3e73c-246e-434a-88c7-f987454d38c2",
+        "name": "Gaddafi Stadium",
+        "latitude": 31.5133615,
+        "longitude": 74.3334644,
+        "source": "directory",
+        "sports": [
+          "Cricket"
+        ],
+        "courts": 0,
+        "ownerVerified": false
+      },
+      {
+        "id": "36baada3-2fee-489c-8fb2-2ee0da6dd0ec",
+        "name": "Gao Shala Sports Centre",
+        "latitude": 31.6039355,
+        "longitude": 74.2961018,
+        "source": "directory",
+        "sports": [
+          "Cricket",
+          "Football"
+        ],
+        "courts": 0,
+        "ownerVerified": false
+      },
+      {
+        "id": "8ee7a3d9-7471-48a2-882f-a24407e35f86",
+        "name": "Ittefaq Cricket Ground",
+        "latitude": 31.475362,
+        "longitude": 74.3405906,
+        "source": "directory",
+        "sports": [
+          "Cricket"
+        ],
+        "courts": 0,
+        "ownerVerified": false
+      },
+      {
+        "id": "5377b674-cb38-4ec3-8a09-ed49dbc6e1aa",
+        "name": "LDA Sports Complex Gulberg",
+        "latitude": 31.512458,
+        "longitude": 74.358681,
+        "source": "directory",
+        "sports": [
+          "Badminton"
+        ],
+        "courts": 0,
+        "ownerVerified": false
+      },
+      {
+        "id": "8b965432-4789-4dba-8472-54b8d252e92b",
+        "name": "Model Town Football Club",
+        "latitude": 31.4931805,
+        "longitude": 74.3226731,
+        "source": "directory",
+        "sports": [
+          "Football"
+        ],
+        "courts": 0,
+        "ownerVerified": false
+      },
+      {
+        "id": "693d964b-25be-47bf-8983-7d7191987189",
+        "name": "Nadeem Football Club RA Bazaar",
+        "latitude": 31.5046457,
+        "longitude": 74.3851359,
+        "source": "directory",
+        "sports": [
+          "Football"
+        ],
+        "courts": 0,
+        "ownerVerified": false
+      },
+      {
+        "id": "3d6024ae-34dc-408b-8f19-4aaa25b6ece9",
+        "name": "Punjab Stadium",
+        "latitude": 31.5107139,
+        "longitude": 74.3319583,
+        "source": "directory",
+        "sports": [
+          "Football"
+        ],
+        "courts": 0,
+        "ownerVerified": false
+      },
+      {
+        "id": "12a8507e-9983-4409-89a3-ceb7d33cd5fd",
+        "name": "Punjab University Football Ground",
+        "latitude": 31.4995631,
+        "longitude": 74.3126471,
+        "source": "directory",
+        "sports": [
+          "Football"
+        ],
+        "courts": 0,
+        "ownerVerified": false
+      },
+      {
+        "id": "de5fd9ca-8b71-4fa6-85be-69998c2889cd",
+        "name": "Pure Padel",
+        "latitude": 31.4556139,
+        "longitude": 74.3814086,
+        "source": "directory",
+        "sports": [
+          "Padel"
+        ],
+        "courts": 0,
+        "ownerVerified": false
+      },
+      {
+        "id": "effb88ab-fe9b-4cc7-8b6a-59b779eaafd2",
+        "name": "Railway Stadium",
+        "latitude": 31.5656039,
+        "longitude": 74.3506557,
+        "source": "directory",
+        "sports": [],
+        "courts": 0,
+        "ownerVerified": false
+      },
+      {
+        "id": "67fde65f-ecb1-4e1d-8f6c-7e59530bc955",
+        "name": "Sabsazar Cricket Stadium",
+        "latitude": 31.519113,
+        "longitude": 74.2679061,
+        "source": "directory",
+        "sports": [
+          "Cricket"
+        ],
+        "courts": 0,
+        "ownerVerified": false
+      },
+      {
+        "id": "14c3aba2-cfd8-42d1-8cff-3a0d26ec192d",
+        "name": "Safari Villas Badminton Court",
+        "latitude": 31.3868053,
+        "longitude": 74.1951824,
+        "source": "directory",
+        "sports": [
+          "Badminton"
+        ],
+        "courts": 0,
+        "ownerVerified": false
+      },
+      {
+        "id": "c4593c23-6afd-4e22-8f14-d96974ddd9fe",
+        "name": "Sports Complex (Johar Town)",
+        "latitude": 31.4581688,
+        "longitude": 74.2817327,
+        "source": "directory",
+        "sports": [],
+        "courts": 0,
+        "ownerVerified": false
+      },
+      {
+        "id": "e42e9f7b-ec5c-4dd8-8219-f7746449f82a",
+        "name": "WAPDA Sports Complex",
+        "latitude": 31.4467859,
+        "longitude": 74.3526716,
+        "source": "directory",
+        "sports": [],
+        "courts": 0,
+        "ownerVerified": false
+      }
+    ]
+  },
+  {
+    "name": "dev_venue_owner_01",
+    "status": 200,
+    "venue": "Gaddafi Stadium",
+    "id": "e0f3e73c-246e-434a-88c7-f987454d38c2",
+    "courts": 0
+  },
+  {
+    "name": "dev_venue_owner_01 foreign schedule denied",
+    "status": 403
+  },
+  {
+    "name": "dev_venue_owner_02",
+    "status": 200,
+    "venue": "Punjab Stadium",
+    "id": "3d6024ae-34dc-408b-8f19-4aaa25b6ece9",
+    "courts": 0
+  },
+  {
+    "name": "dev_venue_owner_02 foreign schedule denied",
+    "status": 403
+  },
+  {
+    "name": "dev_venue_owner_03",
+    "status": 200,
+    "venue": "LDA Sports Complex Gulberg",
+    "id": "5377b674-cb38-4ec3-8a09-ed49dbc6e1aa",
+    "courts": 0
+  },
+  {
+    "name": "dev_venue_owner_03 foreign schedule denied",
+    "status": 403
+  },
+  {
+    "name": "/admin/access",
+    "status": 200
+  },
+  {
+    "name": "/admin/overview",
+    "status": 200,
+    "summary": {
+      "venues": 31,
+      "courts": 24,
+      "confirmed": 92,
+      "recordedRevenuePkr": 4290,
+      "totalBookings": 133,
+      "totalGames": 58,
+      "completedGames": 24,
+      "pendingVenues": 3,
+      "venueOwners": 31,
+      "cancellations": 6,
+      "users": 73
+    }
+  },
+  {
+    "name": "/admin/users",
+    "status": 200
+  },
+  {
+    "name": "/admin/users?owners=true",
+    "status": 200
+  },
+  {
+    "name": "/admin/venues?pageSize=50",
+    "status": 200
+  },
+  {
+    "name": "/admin/bookings",
+    "status": 200
+  },
+  {
+    "name": "/admin/games",
+    "status": 200
+  },
+  {
+    "name": "/admin/reviews",
+    "status": 200
+  },
+  {
+    "name": "/admin/reports",
+    "status": 200
+  },
+  {
+    "name": "/admin/content",
+    "status": 200
+  },
+  {
+    "name": "/admin/catalog",
+    "status": 200
+  },
+  {
+    "name": "/admin/audit-logs",
+    "status": 200
+  }
+]

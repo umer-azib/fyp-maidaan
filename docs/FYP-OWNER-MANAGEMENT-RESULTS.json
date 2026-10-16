@@ -1,0 +1,35 @@
+[
+  {
+    "username": "dev_venue_owner_01",
+    "venueId": "e0f3e73c-246e-434a-88c7-f987454d38c2",
+    "courtId": "57d56624-4191-4530-b94e-e44b5f4ca352",
+    "privateEdit": 200,
+    "scheduleSaved": 200,
+    "calendar": 200,
+    "publicBookingDisabled": true,
+    "publicFactsUnchanged": true,
+    "courtCount": 1
+  },
+  {
+    "username": "dev_venue_owner_02",
+    "venueId": "3d6024ae-34dc-408b-8f19-4aaa25b6ece9",
+    "courtId": "dd88c41d-0d43-4722-a90e-99ad4da9eba1",
+    "privateEdit": 200,
+    "scheduleSaved": 200,
+    "calendar": 200,
+    "publicBookingDisabled": true,
+    "publicFactsUnchanged": true,
+    "courtCount": 1
+  },
+  {
+    "username": "dev_venue_owner_03",
+    "venueId": "5377b674-cb38-4ec3-8a09-ed49dbc6e1aa",
+    "courtId": "afcf92e9-e52b-4426-abe8-ec326b3368bd",
+    "privateEdit": 200,
+    "scheduleSaved": 200,
+    "calendar": 200,
+    "publicBookingDisabled": true,
+    "publicFactsUnchanged": true,
+    "courtCount": 1
+  }
+]

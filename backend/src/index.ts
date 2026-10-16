@@ -1,0 +1,13 @@
+import 'dotenv/config';
+import { createApp } from './app';
+import { postgresDatabase } from './postgres';
+import { applicationRouter } from './application';
+const port=Number(process.env.PORT||3001);
+if(!Number.isInteger(port)||port<1||port>65535)throw new Error('Invalid PORT.');
+const origins=(process.env.CORS_ORIGINS||'http://localhost:5173,http://127.0.0.1:5173,http://localhost:8081,http://127.0.0.1:8081').split(',').map(s=>s.trim());
+const production=process.env.NODE_ENV==='production';
+if(production&&origins.some(o=>!o.startsWith('https://')))throw new Error('Production web origins must use HTTPS.');
+const db=process.env.DATABASE_URL?postgresDatabase(process.env.DATABASE_URL):null;
+const url=process.env.SUPABASE_URL,key=process.env.SUPABASE_SECRET_KEY||process.env.SUPABASE_SERVICE_ROLE_KEY;
+const legacyDisabled={publicDb:null,authenticate:async()=>{throw new Error('Supabase Auth is not accepted by this server.')}};
+createApp(legacyDisabled,origins,applicationRouter(db,origins,production,url&&key?{url,key}:undefined),!!db).listen(port,'0.0.0.0',()=>console.log('Maidaan API listening on port '+port+(db?'':' (DATABASE_URL not configured)')));

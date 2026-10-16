@@ -1,0 +1,635 @@
+{
+  "testedAt": "2026-10-16T00:51:10.625Z",
+  "method": "Real authenticated HTTP and provider requests; no rendered browser testing",
+  "checks": [
+    {
+      "name": "Unauthenticated assistant",
+      "status": 401,
+      "details": {
+        "error": {
+          "code": "UNAUTHORIZED",
+          "message": "Sign in to continue.",
+          "requestId": "a18fb345-14f7-4ff7-8bae-cc30b7c7ef26"
+        }
+      }
+    },
+    {
+      "name": "Canonical /api alias",
+      "status": 307,
+      "details": {
+        "location": "/v1/ai/chat"
+      }
+    },
+    {
+      "name": "Find badminton games tomorrow at 6 PM",
+      "status": 200,
+      "details": {
+        "answer": "Found 4 matching games for 2026-10-17 at 18:00. Times are Pakistan Standard Time. Open a result to confirm details and join.",
+        "filters": {
+          "intent": "games",
+          "sport": "Badminton",
+          "area": null,
+          "date": "2026-10-17",
+          "time": "18:00",
+          "period": null
+        },
+        "cards": [
+          {
+            "kind": "game",
+            "id": "417e17f5-7849-41be-89cc-e8e88aebcebf",
+            "title": "Open Badminton / development fixture 7",
+            "subtitle": "Willow Shuttle House (Development fixture) / 2 / Badminton",
+            "startsAt": "2026-10-17T13:00:00.000Z",
+            "remaining": 1,
+            "developmentFixture": true
+          },
+          {
+            "kind": "game",
+            "id": "664be67c-1ef5-4bb9-89b0-85ac06791349",
+            "title": "Open Badminton / development fixture 5",
+            "subtitle": "Willow Shuttle House (Development fixture) / 1 / Badminton",
+            "startsAt": "2026-10-17T13:00:00.000Z",
+            "remaining": 1,
+            "developmentFixture": true
+          },
+          {
+            "kind": "game",
+            "id": "7200288c-a1f0-4ab1-84ea-977c2351a733",
+            "title": "Open Badminton / development fixture 21",
+            "subtitle": "Monsoon Shuttle Club (Development fixture) / 1 / Badminton",
+            "startsAt": "2026-10-17T13:00:00.000Z",
+            "remaining": 1,
+            "developmentFixture": true
+          },
+          {
+            "kind": "game",
+            "id": "dc076d36-a575-483a-8eaf-d0a65c54f176",
+            "title": "Open Badminton / development fixture 23",
+            "subtitle": "Monsoon Shuttle Club (Development fixture) / 2 / Badminton",
+            "startsAt": "2026-10-17T13:00:00.000Z",
+            "remaining": 1,
+            "developmentFixture": true
+          }
+        ],
+        "searchedAt": "2026-10-16T00:50:51.124Z"
+      }
+    },
+    {
+      "name": "Location-specific game forecast",
+      "status": 200,
+      "details": {
+        "source": "Open-Meteo",
+        "latitude": 31.5111,
+        "longitude": 74.3489,
+        "timezone": "Asia/Karachi",
+        "fetchedAt": "2026-10-16T00:50:53.638Z",
+        "location": "Willow Shuttle House (Development fixture) / 2",
+        "point": {
+          "at": "2026-10-17T13:00:00.000Z",
+          "temperatureC": 25.3,
+          "windKph": 4.7,
+          "conditions": "Clear sky",
+          "rainProbability": 0
+        },
+        "warning": null,
+        "message": "Forecast estimates may change."
+      }
+    },
+    {
+      "name": "Game card destination",
+      "status": 200,
+      "details": {
+        "path": "/player/games/417e17f5-7849-41be-89cc-e8e88aebcebf",
+        "id": "417e17f5-7849-41be-89cc-e8e88aebcebf",
+        "remaining": 1
+      }
+    },
+    {
+      "name": "Which badminton courts are free tonight?",
+      "status": 200,
+      "details": {
+        "answer": "Found 8 matching courts for 2026-10-16. Times are Pakistan Standard Time. Open a result to confirm details and book; availability can change.",
+        "filters": {
+          "intent": "courts",
+          "sport": "Badminton",
+          "area": null,
+          "date": "2026-10-16",
+          "time": null,
+          "period": "evening"
+        },
+        "cards": [
+          {
+            "kind": "court",
+            "id": "52501664-b29f-43f8-8799-543935b2adf8",
+            "title": "Court 1",
+            "subtitle": "Monsoon Shuttle Club (Development fixture) / Badminton",
+            "venueId": "1dbfd1bb-ca62-4767-8b61-5e0ba921f05f",
+            "courtId": "52501664-b29f-43f8-8799-543935b2adf8",
+            "startsAt": "2026-10-16T13:00:00.000Z",
+            "date": "2026-10-16",
+            "pricePkr": 1170,
+            "developmentFixture": true
+          },
+          {
+            "kind": "court",
+            "id": "3a38091a-6abd-4220-8c71-fc2f9c5ffac8",
+            "title": "Court 2",
+            "subtitle": "Monsoon Shuttle Club (Development fixture) / Badminton",
+            "venueId": "1dbfd1bb-ca62-4767-8b61-5e0ba921f05f",
+            "courtId": "3a38091a-6abd-4220-8c71-fc2f9c5ffac8",
+            "startsAt": "2026-10-16T13:00:00.000Z",
+            "date": "2026-10-16",
+            "pricePkr": 1560,
+            "developmentFixture": true
+          },
+          {
+            "kind": "court",
+            "id": "2c3c2aba-c346-4b60-8eba-d34dea4748e8",
+            "title": "Court 1",
+            "subtitle": "Willow Shuttle House (Development fixture) / Badminton",
+            "venueId": "ac377d48-4f5a-4749-8b9b-3fd507991246",
+            "courtId": "2c3c2aba-c346-4b60-8eba-d34dea4748e8",
+            "startsAt": "2026-10-16T13:00:00.000Z",
+            "date": "2026-10-16",
+            "pricePkr": 1170,
+            "developmentFixture": true
+          },
+          {
+            "kind": "court",
+            "id": "3681d96c-41c8-4398-8d48-93bd6f04f645",
+            "title": "Court 2",
+            "subtitle": "Willow Shuttle House (Development fixture) / Badminton",
+            "venueId": "ac377d48-4f5a-4749-8b9b-3fd507991246",
+            "courtId": "3681d96c-41c8-4398-8d48-93bd6f04f645",
+            "startsAt": "2026-10-16T13:00:00.000Z",
+            "date": "2026-10-16",
+            "pricePkr": 1560,
+            "developmentFixture": true
+          },
+          {
+            "kind": "court",
+            "id": "3a38091a-6abd-4220-8c71-fc2f9c5ffac8",
+            "title": "Court 2",
+            "subtitle": "Monsoon Shuttle Club (Development fixture) / Badminton",
+            "venueId": "1dbfd1bb-ca62-4767-8b61-5e0ba921f05f",
+            "courtId": "3a38091a-6abd-4220-8c71-fc2f9c5ffac8",
+            "startsAt": "2026-10-16T13:30:00.000Z",
+            "date": "2026-10-16",
+            "pricePkr": 1560,
+            "developmentFixture": true
+          },
+          {
+            "kind": "court",
+            "id": "3681d96c-41c8-4398-8d48-93bd6f04f645",
+            "title": "Court 2",
+            "subtitle": "Willow Shuttle House (Development fixture) / Badminton",
+            "venueId": "ac377d48-4f5a-4749-8b9b-3fd507991246",
+            "courtId": "3681d96c-41c8-4398-8d48-93bd6f04f645",
+            "startsAt": "2026-10-16T13:30:00.000Z",
+            "date": "2026-10-16",
+            "pricePkr": 1560,
+            "developmentFixture": true
+          },
+          {
+            "kind": "court",
+            "id": "52501664-b29f-43f8-8799-543935b2adf8",
+            "title": "Court 1",
+            "subtitle": "Monsoon Shuttle Club (Development fixture) / Badminton",
+            "venueId": "1dbfd1bb-ca62-4767-8b61-5e0ba921f05f",
+            "courtId": "52501664-b29f-43f8-8799-543935b2adf8",
+            "startsAt": "2026-10-16T14:00:00.000Z",
+            "date": "2026-10-16",
+            "pricePkr": 1170,
+            "developmentFixture": true
+          },
+          {
+            "kind": "court",
+            "id": "3a38091a-6abd-4220-8c71-fc2f9c5ffac8",
+            "title": "Court 2",
+            "subtitle": "Monsoon Shuttle Club (Development fixture) / Badminton",
+            "venueId": "1dbfd1bb-ca62-4767-8b61-5e0ba921f05f",
+            "courtId": "3a38091a-6abd-4220-8c71-fc2f9c5ffac8",
+            "startsAt": "2026-10-16T14:00:00.000Z",
+            "date": "2026-10-16",
+            "pricePkr": 1560,
+            "developmentFixture": true
+          }
+        ],
+        "searchedAt": "2026-10-16T00:50:54.852Z"
+      }
+    },
+    {
+      "name": "Court card destination and actual slot",
+      "status": 200,
+      "details": {
+        "path": "/player/venues/1dbfd1bb-ca62-4767-8b61-5e0ba921f05f?court=52501664-b29f-43f8-8799-543935b2adf8&date=2026-10-16&time=2026-10-16T13%3A00%3A00.000Z",
+        "startsAt": "2026-10-16T13:00:00.000Z",
+        "pricePkr": 1170,
+        "available": true
+      }
+    },
+    {
+      "name": "Anyone looking for a padel partner in DHA?",
+      "status": 200,
+      "details": {
+        "answer": "Found 3 matching games. Times are Pakistan Standard Time. Open a result to confirm details and join.",
+        "filters": {
+          "intent": "games",
+          "sport": "Padel",
+          "area": "DHA",
+          "date": null,
+          "time": null,
+          "period": null
+        },
+        "cards": [
+          {
+            "kind": "game",
+            "id": "616549d2-626c-4174-8895-85d3b479b35f",
+            "title": "Open Padel / development fixture 1",
+            "subtitle": "Juniper Padel Courts (Development fixture) / 1 / Padel",
+            "startsAt": "2026-10-17T13:00:00.000Z",
+            "remaining": 1,
+            "developmentFixture": true
+          },
+          {
+            "kind": "game",
+            "id": "fbdf5434-91c4-447b-85e1-5a467a210d2c",
+            "title": "Open Padel / development fixture 3",
+            "subtitle": "Juniper Padel Courts (Development fixture) / 2 / Padel",
+            "startsAt": "2026-10-17T13:00:00.000Z",
+            "remaining": 1,
+            "developmentFixture": true
+          },
+          {
+            "kind": "game",
+            "id": "fb3381dc-64a1-4c77-8681-c102c4248d8a",
+            "title": "Open Padel / development fixture 2",
+            "subtitle": "Juniper Padel Courts (Development fixture) / 1 / Padel",
+            "startsAt": "2026-10-17T14:00:00.000Z",
+            "remaining": 2,
+            "developmentFixture": true
+          }
+        ],
+        "searchedAt": "2026-10-16T00:50:56.672Z"
+      }
+    },
+    {
+      "name": "Location-specific game forecast",
+      "status": 200,
+      "details": {
+        "source": "Open-Meteo",
+        "latitude": 31.4623,
+        "longitude": 74.4447,
+        "timezone": "Asia/Karachi",
+        "fetchedAt": "2026-10-16T00:50:58.902Z",
+        "location": "Juniper Padel Courts (Development fixture) / 1",
+        "point": {
+          "at": "2026-10-17T13:00:00.000Z",
+          "temperatureC": 24.6,
+          "windKph": 4.8,
+          "conditions": "Clear sky",
+          "rainProbability": 0
+        },
+        "warning": null,
+        "message": "Forecast estimates may change."
+      }
+    },
+    {
+      "name": "Game card destination",
+      "status": 200,
+      "details": {
+        "path": "/player/games/616549d2-626c-4174-8895-85d3b479b35f",
+        "id": "616549d2-626c-4174-8895-85d3b479b35f",
+        "remaining": 1
+      }
+    },
+    {
+      "name": "Find an open football match",
+      "status": 200,
+      "details": {
+        "answer": "Found 6 matching games. Times are Pakistan Standard Time. Open a result to confirm details and join.",
+        "filters": {
+          "intent": "games",
+          "sport": "Football",
+          "area": null,
+          "date": null,
+          "time": null,
+          "period": null
+        },
+        "cards": [
+          {
+            "kind": "game",
+            "id": "4285b088-3f08-4f94-8179-843a1ebc79bf",
+            "title": "Open Football / development fixture 11",
+            "subtitle": "Crescent Football Gardens (Development fixture) / 2 / Football",
+            "startsAt": "2026-10-17T13:00:00.000Z",
+            "remaining": 5,
+            "developmentFixture": true
+          },
+          {
+            "kind": "game",
+            "id": "6152cd13-eaf8-466f-8736-202cf573ac15",
+            "title": "Open Football / development fixture 25",
+            "subtitle": "Olive Five-a-Side Grounds (Development fixture) / 1 / Football",
+            "startsAt": "2026-10-17T13:00:00.000Z",
+            "remaining": 5,
+            "developmentFixture": true
+          },
+          {
+            "kind": "game",
+            "id": "6f18d66b-d0c4-426e-8421-024215df8b38",
+            "title": "Open Football / development fixture 27",
+            "subtitle": "Olive Five-a-Side Grounds (Development fixture) / 2 / Football",
+            "startsAt": "2026-10-17T13:00:00.000Z",
+            "remaining": 5,
+            "developmentFixture": true
+          },
+          {
+            "kind": "game",
+            "id": "e1916f92-3297-458c-8972-d4a6794acd65",
+            "title": "Open Football / development fixture 9",
+            "subtitle": "Crescent Football Gardens (Development fixture) / 1 / Football",
+            "startsAt": "2026-10-17T13:00:00.000Z",
+            "remaining": 5,
+            "developmentFixture": true
+          },
+          {
+            "kind": "game",
+            "id": "6ddda48a-936f-48c2-80d8-6160598c90ee",
+            "title": "Open Football / development fixture 10",
+            "subtitle": "Crescent Football Gardens (Development fixture) / 1 / Football",
+            "startsAt": "2026-10-17T14:00:00.000Z",
+            "remaining": 9,
+            "developmentFixture": true
+          },
+          {
+            "kind": "game",
+            "id": "a13c5fe6-32e8-453e-8c43-0bb30d2c576a",
+            "title": "Open Football / development fixture 26",
+            "subtitle": "Olive Five-a-Side Grounds (Development fixture) / 1 / Football",
+            "startsAt": "2026-10-17T14:00:00.000Z",
+            "remaining": 9,
+            "developmentFixture": true
+          }
+        ],
+        "searchedAt": "2026-10-16T00:51:00.170Z"
+      }
+    },
+    {
+      "name": "Location-specific game forecast",
+      "status": 200,
+      "details": {
+        "source": "Open-Meteo",
+        "latitude": 31.4697,
+        "longitude": 74.2728,
+        "timezone": "Asia/Karachi",
+        "fetchedAt": "2026-10-16T00:51:01.794Z",
+        "location": "Crescent Football Gardens (Development fixture) / 2",
+        "point": {
+          "at": "2026-10-17T13:00:00.000Z",
+          "temperatureC": 25,
+          "windKph": 6,
+          "conditions": "Clear sky",
+          "rainProbability": 0
+        },
+        "warning": null,
+        "message": "Forecast estimates may change."
+      }
+    },
+    {
+      "name": "Game card destination",
+      "status": 200,
+      "details": {
+        "path": "/player/games/4285b088-3f08-4f94-8179-843a1ebc79bf",
+        "id": "4285b088-3f08-4f94-8179-843a1ebc79bf",
+        "remaining": 5
+      }
+    },
+    {
+      "name": "Show badminton players in Gulberg",
+      "status": 200,
+      "details": {
+        "answer": "Found 5 matching players. Times are Pakistan Standard Time. Open a result to confirm details.",
+        "filters": {
+          "intent": "players",
+          "sport": "Badminton",
+          "area": "Gulberg",
+          "date": null,
+          "time": null,
+          "period": null
+        },
+        "cards": [
+          {
+            "kind": "player",
+            "id": "1f619078-6e44-4f6f-83b4-31e1d5f50d68",
+            "title": "Ahmed Khan",
+            "subtitle": "Fictional Maidaan development profile; not a real person.",
+            "developmentFixture": true
+          },
+          {
+            "kind": "player",
+            "id": "00374868-26d8-48b7-874a-4abcfca85abf",
+            "title": "Amna Zahid",
+            "subtitle": "Fictional Maidaan development profile; not a real person.",
+            "developmentFixture": true
+          },
+          {
+            "kind": "player",
+            "id": "59d19998-85e0-4472-80dd-9c230ee1a025",
+            "title": "Laiba Khalid",
+            "subtitle": "Fictional Maidaan development profile; not a real person.",
+            "developmentFixture": true
+          },
+          {
+            "kind": "player",
+            "id": "dbef63b1-6893-4572-81b4-aed6641124fa",
+            "title": "Maryam Aslam",
+            "subtitle": "Fictional Maidaan development profile; not a real person.",
+            "developmentFixture": true
+          },
+          {
+            "kind": "player",
+            "id": "f452bea6-d0a2-4f14-81fa-f999855b4e49",
+            "title": "Nadia Siddiqui",
+            "subtitle": "Fictional Maidaan development profile; not a real person.",
+            "developmentFixture": true
+          }
+        ],
+        "searchedAt": "2026-10-16T00:51:02.908Z"
+      }
+    },
+    {
+      "name": "Public player card destination",
+      "status": 200,
+      "details": {
+        "path": "/player/players/1f619078-6e44-4f6f-83b4-31e1d5f50d68",
+        "id": "1f619078-6e44-4f6f-83b4-31e1d5f50d68"
+      }
+    },
+    {
+      "name": "What's the weather in Lahore?",
+      "status": 200,
+      "details": {
+        "answer": "Lahore: Clear sky, 18.9 C, 0% chance of rain, wind 2.3 km/h.",
+        "filters": {
+          "intent": "weather",
+          "sport": null,
+          "area": null,
+          "date": null,
+          "time": null,
+          "period": null
+        },
+        "cards": [],
+        "searchedAt": "2026-10-16T00:51:05.093Z",
+        "weather": {
+          "source": "Open-Meteo",
+          "latitude": 31.5204,
+          "longitude": 74.3587,
+          "timezone": "Asia/Karachi",
+          "fetchedAt": "2026-10-16T00:51:05.263Z",
+          "location": "Lahore",
+          "point": {
+            "at": "2026-10-16T00:45:00.000Z",
+            "temperatureC": 18.9,
+            "windKph": 2.3,
+            "conditions": "Clear sky",
+            "rainProbability": 0
+          },
+          "warning": null,
+          "message": "Forecast estimates may change."
+        }
+      }
+    },
+    {
+      "name": "Find badminton games on January 1, 2039",
+      "status": 200,
+      "details": {
+        "answer": "No matching games found for 2039-01-01. Try another time, sport or area.",
+        "filters": {
+          "intent": "games",
+          "sport": "Badminton",
+          "area": null,
+          "date": "2039-01-01",
+          "time": null,
+          "period": null
+        },
+        "cards": [],
+        "searchedAt": "2026-10-16T00:51:06.729Z"
+      }
+    },
+    {
+      "name": "Native bearer session through /api alias",
+      "status": 200,
+      "details": {
+        "answer": "Found 8 matching venues. Times are Pakistan Standard Time. Open a result to confirm details.",
+        "filters": {
+          "intent": "venues",
+          "sport": null,
+          "area": null,
+          "date": null,
+          "time": null,
+          "period": null
+        },
+        "cards": [
+          {
+            "kind": "venue",
+            "directoryOnly": true,
+            "id": "aff44e8e-73a0-4173-86a4-8b73d53146e9",
+            "title": "Badminton Court (Saddar)",
+            "subtitle": "Saddar, Lahore Cantt",
+            "developmentFixture": false
+          },
+          {
+            "kind": "venue",
+            "directoryOnly": true,
+            "id": "9d0ca4dc-9fb8-4b03-897f-bfd4f961acc1",
+            "title": "Captain Fasih Babr Shaheed Sports Complex Phase 6 DHA Lahore",
+            "subtitle": "Avenue 6, DHA Phase 6, Lahore",
+            "developmentFixture": false
+          },
+          {
+            "kind": "venue",
+            "directoryOnly": true,
+            "id": "d5db4272-1b1a-46f3-813f-f41e7271ea4c",
+            "title": "Casa de Padel",
+            "subtitle": "DHA Phase 5, Lahore",
+            "developmentFixture": false
+          },
+          {
+            "kind": "venue",
+            "directoryOnly": false,
+            "id": "5374c1da-3f54-4f20-8668-2156fb3cf90e",
+            "title": "Cedar Padel Gardens (Development fixture)",
+            "subtitle": "Illustrative neighborhood location, Valencia, Lahore (not a real premises address)",
+            "developmentFixture": true
+          },
+          {
+            "kind": "venue",
+            "directoryOnly": false,
+            "id": "2101eeb8-16f6-45b2-8a6d-bccb64114fa4",
+            "title": "Crescent Football Gardens (Development fixture)",
+            "subtitle": "Illustrative neighborhood location, Johar Town, Lahore (not a real premises address)",
+            "developmentFixture": true
+          },
+          {
+            "kind": "venue",
+            "directoryOnly": true,
+            "id": "f0da0e25-d50f-44f9-84b8-30f19c2dbefe",
+            "title": "DHA Phase V Sector L Football Ground",
+            "subtitle": "Sector L, DHA Phase V, Lahore",
+            "developmentFixture": false
+          },
+          {
+            "kind": "venue",
+            "directoryOnly": false,
+            "id": "213bea21-7cdc-44ed-85ca-2d06d019c10c",
+            "title": "Falcon Cricket Commons (Development fixture)",
+            "subtitle": "Illustrative neighborhood location, Model Town, Lahore (not a real premises address)",
+            "developmentFixture": true
+          },
+          {
+            "kind": "venue",
+            "directoryOnly": true,
+            "id": "fccbb000-ffe0-4f01-8acc-1c27f473d26a",
+            "title": "Football League Practice Ground",
+            "subtitle": "Javed Iqbal Street, Gulberg, Lahore",
+            "developmentFixture": false
+          }
+        ],
+        "searchedAt": "2026-10-16T00:51:09.649Z"
+      }
+    },
+    {
+      "name": "Actual Open-Meteo response and cached timestamp",
+      "status": 200,
+      "details": {
+        "source": "Open-Meteo",
+        "latitude": 31.5204,
+        "longitude": 74.3587,
+        "timezone": "Asia/Karachi",
+        "fetchedAt": "2026-10-16T00:51:05.263Z",
+        "location": "Lahore",
+        "point": {
+          "at": "2026-10-16T00:45:00.000Z",
+          "temperatureC": 18.9,
+          "windKph": 2.3,
+          "conditions": "Clear sky",
+          "rainProbability": 0
+        },
+        "warning": null,
+        "message": "Forecast estimates may change."
+      }
+    },
+    {
+      "name": "Unauthorized or nonexistent game weather",
+      "status": 404,
+      "details": {
+        "error": {
+          "code": "NOT_FOUND",
+          "message": "Game not found.",
+          "requestId": "3882b5b2-4fdb-46f2-927a-0227aaf0962c"
+        }
+      }
+    }
+  ]
+}

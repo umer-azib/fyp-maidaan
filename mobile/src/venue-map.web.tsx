@@ -1,0 +1,4 @@
+import {useEffect,useMemo,useRef} from 'react';
+import {mapHtml} from './map-html';
+import type {Venue} from '../../shared/contracts';
+export default function VenueMap({venues,selected,onAction}:{venues:Venue[];selected?:string;onAction:(type:string,id:string)=>void}){const frame=useRef<HTMLIFrameElement>(null),html=useMemo(()=>mapHtml(venues,selected),[venues,selected]);useEffect(()=>{const handle=(e:MessageEvent)=>{if(e.source!==frame.current?.contentWindow)return;try{const data=JSON.parse(e.data);if(['venue','directions'].includes(data.type)&&venues.some(v=>v.id===data.id))onAction(data.type,data.id)}catch{/* Ignore other iframe messages. */}};window.addEventListener('message',handle);return()=>window.removeEventListener('message',handle)},[venues,onAction]);return <iframe ref={frame} title="Lahore venue map" sandbox="allow-scripts" srcDoc={html} style={{height:440,width:'100%',border:0,borderRadius:20}}/>}
