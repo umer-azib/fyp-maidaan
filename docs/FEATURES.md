@@ -1,3 +1,12 @@
+# Vercel TS2688 repair - 2026-10-16
+
+| Feature | Role | Dependencies / API | Priority | Actual status |
+| --- | --- | --- | --- | --- |
+| Vercel TypeScript 7 temporary-config build | Deployment operator | Explicit backend typeRoots; npm ci --include=dev; existing locked @types/node | P0 | Exact TS2688 reproduced using Vercel-style temporary config with all dependencies installed; fixed external-config transpilation and clean production-environment install/build passed. Existing Express index entry and ../shared imports preserved. |
+| Deployment health URL | Operator | Existing Express liveness handler | P0 | Both /health and /api/health returned 200 from clean compiled server; regression covers both. No database/auth/migration changes. Hosted redeployment remains unverified. |
+
+See [deployment and reproduction evidence](VERCEL-BACKEND.md#ts2688-build-repair-2026-10-16).
+
 # Vercel backend deployment preparation - 2026-10-16
 
 | Feature | Role | Dependencies / API | Priority | Actual status |

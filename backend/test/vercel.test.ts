@@ -2,6 +2,9 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {PGlite} from '@electric-sql/pglite';
 import {execFileSync} from 'node:child_process';
+import {mkdtempSync,writeFileSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join,resolve} from 'node:path';
 import {accountService,hashApplicationPassword} from '../src/accounts';
 import {temporaryAdminId} from '../src/runtime';
 import {provisionAdministrator} from '../src/admin-provision';
@@ -9,6 +12,14 @@ import {requireDevelopment} from '../scripts/dev-fixtures';
 import {applicationRouter} from '../src/application';
 import {createApp} from '../src/app';
 import {postgresDatabase,type Database} from '../src/postgres';
+
+test('Vercel TypeScript 7 temporary config resolves backend Node types and shared sources',()=>{
+ const temp=mkdtempSync(join(tmpdir(),'maidaan-vercel-transpile-'));
+ const config=join(temp,'tsconfig.json');
+ // Match Vercel's native TypeScript compiler path: config lives outside the repository.
+ writeFileSync(config,JSON.stringify({extends:resolve('tsconfig.json'),compilerOptions:{sourceMap:true,inlineSourceMap:false,inlineSources:true,declaration:false,declarationMap:false,emitDeclarationOnly:false,noEmit:false,outDir:join(temp,'output'),rootDir:resolve('..'),incremental:false,composite:false,noCheck:true,rewriteRelativeImportExtensions:true},files:[resolve('index.ts')],include:[],exclude:[]}));
+ execFileSync(process.execPath,[resolve('node_modules/typescript/bin/tsc'),'--project',config],{encoding:'utf8',timeout:30000});
+});
 
 test('Vercel blocks fixture/admin logins and existing sessions, permits real accounts, and polls private notifications',async()=>{
  const pg=new PGlite();
@@ -62,8 +73,10 @@ test('compiled Vercel entry imports shared contracts, exports Express without li
  if(typeof app!=='function')throw Error('Missing Express export');
  const server=app.listen(0,'127.0.0.1',async()=>{try{
  const base='http://127.0.0.1:'+server.address().port;
- const r=await fetch(base+'/health');const body=await r.json();
- if(r.status!==200||body.status!=='ok'||body.configured!==false)throw Error('Health response');
+ for(const path of ['/health','/api/health']){
+ const r=await fetch(base+path);const body=await r.json();
+ if(r.status!==200||body.status!=='ok'||body.configured!==false)throw Error('Health response: '+path);
+ }
  console.log('Compiled shared imports and health passed');
  }catch(e){process.exitCode=1;console.error(e.message)}finally{server.close()}});`;
  const output=execFileSync(process.execPath,['-e',script],{cwd:process.cwd(),env:{...process.env,VERCEL:'1',NODE_ENV:'production',CORS_ORIGINS:'https://player.example.test',DATABASE_URL:'',SUPABASE_URL:'',SUPABASE_SECRET_KEY:'',SUPABASE_SERVICE_ROLE_KEY:''},timeout:20000,encoding:'utf8'});

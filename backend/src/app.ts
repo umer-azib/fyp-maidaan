@@ -34,7 +34,7 @@ export function createApp(services:Services,origins:string[]=['http://localhost:
  async function auth(req:Request,res:Response,next:NextFunction){try{const match=/^Bearer ([^\s]+)$/i.exec(req.headers.authorization||'');if(!match)throw new HttpError(401,'UNAUTHORIZED','Sign in to continue.');res.locals.auth=await services.authenticate(match[1]);next();}catch(e){next(e)}}
  const context=(res:Response)=>res.locals.auth as AuthContext;
  async function access(res:Response){const {db,userId}=context(res);const [admin,manager]=await Promise.all([db.from('admin_memberships').select('user_id').eq('user_id',userId).maybeSingle(),db.from('venue_managers').select('venue_id').eq('user_id',userId).limit(1)]);check(admin.error);check(manager.error);return {player:true,admin:!!admin.data,venueManager:!!manager.data?.length};}
- app.get('/health',(_req,res)=>res.json({status:'ok',configured:databaseConfigured||!!services.publicDb}));
+ app.get(['/health','/api/health'],(_req,res)=>res.json({status:'ok',configured:databaseConfigured||!!services.publicDb}));
  // Keep the existing /v1 cookie scope; 307 preserves POST body and sends the cookie to its authenticated destination.
  if(application)app.post('/api/ai/chat',(_req,res)=>res.redirect(307,'/v1/ai/chat'));
  if(application)app.use('/v1',application);
