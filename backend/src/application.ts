@@ -1,3 +1,4 @@
+import { isProduction, isVercel } from './runtime';
 import {assistantRoutes} from './assistant';
 import {notificationRoutes} from './notifications';
 import { mediaBytes } from './media';
@@ -23,6 +24,7 @@ const gameColumns=`g.*,
  coalesce((select jsonb_agg(jsonb_build_object('profiles',jsonb_build_object('id',p.id,'name',p.name,'avatarPath',p.avatar_path))) from public.join_requests jr join public.profiles p on p.id=jr.player_id where jr.game_id=g.id and (g.host_id=$1 or jr.player_id=$1)),'[]') join_requests`;
 const cookieName='maidaan_session';
 export function applicationRouter(db:Database|null,origins:string[],production=false,storageConfig?:{url:string;key:string}){
+ production=production||isProduction();
  const router=Router();
  const storage=storageConfig?createClient(storageConfig.url,storageConfig.key,{auth:{persistSession:false,autoRefreshToken:false}}):null;
  const database=()=>{if(!db)throw new HttpError(503,'NOT_CONFIGURED','Configure server DATABASE_URL and deploy the reviewed migrations.');return db};
@@ -30,7 +32,7 @@ export function applicationRouter(db:Database|null,origins:string[],production=f
  const avatarCache=new Map<string,{url:string;until:number}>();
  async function avatarUrl(path?:string|null){if(!path||!storage)return null;const cached=avatarCache.get(path);if(cached&&cached.until>Date.now())return cached.url;const result=await storage.storage.from('avatars').createSignedUrl(path,3600);if(result.error)return null;if(avatarCache.size>2000)avatarCache.clear();avatarCache.set(path,{url:result.data.signedUrl,until:Date.now()+900000});return result.data.signedUrl;}
  const identity=(res:Response)=>res.locals.identity as Identity;
- const writeCookie=(res:Response,token:string)=>res.cookie(cookieName,token,{httpOnly:true,secure:production,sameSite:'lax',path:'/v1',maxAge:7*86400000});
+ const writeCookie=(res:Response,token:string)=>res.cookie(cookieName,token,{httpOnly:true,secure:production,sameSite:isVercel()?'none':'lax',path:'/v1',maxAge:7*86400000});
  const client=(req:Request)=>req.header('X-Maidaan-Client')==='mobile'?'mobile' as const:'web' as const;
  function cookie(req:Request){return /(?:^|;\s*)maidaan_session=([A-Za-z0-9_-]{43})(?:;|$)/.exec(req.headers.cookie||'')?.[1]}
  router.use((req,_res,next)=>{
@@ -62,7 +64,7 @@ export function applicationRouter(db:Database|null,origins:string[],production=f
  router.post('/auth/register',limited,async(req,res)=>{database();sessionResponse(req,res,await accounts!.register(req.body,client(req)))});
  router.post('/auth/login',limited,async(req,res)=>{database();const input=z.object({identifier:z.string().min(1).max(254),password:z.string().min(1).max(128)}).strict().parse(req.body);sessionResponse(req,res,await accounts!.login(input.identifier,input.password,client(req)))});
  router.get('/auth/session',auth,(_req,res)=>res.json({userId:identity(res).userId,expiresAt:identity(res).expiresAt}));
- router.post('/auth/logout',auth,async(_req,res)=>{await accounts!.logout(identity(res));res.clearCookie(cookieName,{httpOnly:true,secure:production,sameSite:'lax',path:'/v1'});res.json({ok:true})});
+ router.post('/auth/logout',auth,async(_req,res)=>{await accounts!.logout(identity(res));res.clearCookie(cookieName,{httpOnly:true,secure:production,sameSite:isVercel()?'none':'lax',path:'/v1'});res.json({ok:true})});
  router.post('/auth/renew',auth,async(req,res)=>sessionResponse(req,res,await accounts!.renew(identity(res))));
  router.get('/locations',async(_req,res)=>{const [cities,areas]=await Promise.all([database().query(`select id,name,country,timezone from public.cities where active order by name`),database().query(`select id,name,city_id as "cityId" from public.areas where active order by name`)]);res.json({cities:cities.rows,areas:areas.rows})});
  async function profile(userId:string):Promise<Profile>{

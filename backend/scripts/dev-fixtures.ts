@@ -1,3 +1,4 @@
+import { isProduction } from '../src/runtime';
 import { createHash } from 'node:crypto';
 import type { Database } from '../src/postgres';
 export const dataset='maidaan-lahore-dev-v1';
@@ -14,7 +15,7 @@ export const entities={
 } as const;
 export type Entity=keyof typeof entities;
 export type SeedPolicy={environment:string|undefined;enabled:string|undefined};
-export function requireDevelopment(policy:SeedPolicy){if(policy.environment!=='development'||policy.enabled!=='true')throw new Error('Development fixtures require NODE_ENV=development and MAIDAAN_ENABLE_DEV_SEED=true. Never target a production database.');}
+export function requireDevelopment(policy:SeedPolicy){if(isProduction()||policy.environment!=='development'||policy.enabled!=='true')throw new Error('Development fixtures require NODE_ENV=development and MAIDAAN_ENABLE_DEV_SEED=true. Never target a production database.');}
 export function fixtureId(key:string){const hex=createHash('sha256').update(dataset+':'+key).digest('hex').slice(0,32).split('');hex[12]='4';hex[16]='8';const value=hex.join('');return [value.slice(0,8),value.slice(8,12),value.slice(12,16),value.slice(16,20),value.slice(20)].join('-');}
 export const keyExpression=(entity:Entity,alias:string)=>'jsonb_build_object('+entities[entity][1].map(k=>`'${k}',to_jsonb(${alias})->'${k}'`).join(',')+')';
 export async function prepareRegistry(db:Database){

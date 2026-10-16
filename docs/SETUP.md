@@ -134,3 +134,7 @@ Even for a verified scheduled venue, M1 displays informational opening hours—n
 - Run browser/device visual, keyboard, safe-area and touch checks against design references. Validate CORS and deployed HTTPS. Inspect all future API additions for direct-REST/RLS bypasses.
 
 Full roadmap: FEATURES.md. Schema design: SCHEMA.md. API: API.md. Current verification evidence: VERIFICATION.md.
+
+## Vercel backend
+
+Use [VERCEL-BACKEND.md](VERCEL-BACKEND.md) for the backend root/Express settings, private environment variables, transaction pooler, production account restrictions and notification polling. Never copy the development .env to a public deployment.

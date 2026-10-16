@@ -5,6 +5,7 @@ import type { Database } from './postgres';
 import { actor } from './postgres';
 import { HttpError } from './data';
 import { profileSchema } from './validation';
+import { isProduction, temporaryAdminId } from './runtime';
 export const passwordSchema=z.string().min(10).max(72).refine(p=>!truncates(p),'Password must be at most 72 UTF-8 bytes.');
 export const hashApplicationPassword=(password:string)=>hash(passwordSchema.parse(password),12);
 export const registerSchema=z.object({
@@ -18,6 +19,8 @@ export const registerSchema=z.object({
 export type Identity={userId:string;sessionHash:string;client:'web'|'mobile';expiresAt:string};
 export const digest=(token:string)=>createHash('sha256').update(token).digest('hex');
 export function accountService(db:Database,allowDevelopmentFixtures=false){
+ allowDevelopmentFixtures=allowDevelopmentFixtures&&!isProduction();
+ const blockedIds=allowDevelopmentFixtures?[]:[temporaryAdminId];
  const dummy=hash(randomBytes(32).toString('hex'),12);
  async function issue(tx:Database,userId:string,client:'web'|'mobile',absolute?:Date|string){
   const token=randomBytes(32).toString('base64url');
@@ -37,15 +40,15 @@ export function accountService(db:Database,allowDevelopmentFixtures=false){
   });
  },
  async login(identifier:string,password:string,client:'web'|'mobile'){
-  const r=await db.query<{id:string;password_hash:string|null;status:string;is_development_fixture:boolean}>('select id,password_hash,status,is_development_fixture from app_private.accounts where email=$1 or username=$1',[identifier.trim().toLowerCase()]);
+  const r=await db.query<{id:string;password_hash:string|null;status:string;is_development_fixture:boolean;username:string;email:string}>('select id,password_hash,status,is_development_fixture,username,email from app_private.accounts where email=$1 or username=$1',[identifier.trim().toLowerCase()]);
   const account=r.rows[0];const valid=await compare(password,account?.password_hash||await dummy);
-  if(!account||!valid||account.status!=='active'||(account.is_development_fixture&&!allowDevelopmentFixtures)||truncates(password))throw new HttpError(401,'INVALID_CREDENTIALS','Incorrect username/email or password.');
+  if(!account||!valid||account.status!=='active'||(account.is_development_fixture&&!allowDevelopmentFixtures)||blockedIds.includes(account.id)||(!allowDevelopmentFixtures&&(account.username==='maidaan_admin'||account.email==='maidaan.admin.demo@example.com'))||truncates(password))throw new HttpError(401,'INVALID_CREDENTIALS','Incorrect username/email or password.');
   return db.transaction(tx=>issue(tx,account.id,client));
  },
  async authenticate(token:string,client:'web'|'mobile'):Promise<Identity>{
   if(!/^[A-Za-z0-9_-]{43}$/.test(token))throw new HttpError(401,'UNAUTHORIZED','Sign in to continue.');
   const r=await db.query<{account_id:string;expires_at:Date|string}>(`update app_private.sessions s set expires_at=least(now()+interval '7 days',absolute_expires_at) from app_private.accounts a
-   where s.token_hash=$1 and s.client=$2 and s.account_id=a.id and a.status='active' and s.expires_at>now() and s.absolute_expires_at>now() and (not a.is_development_fixture or $3) returning s.account_id,s.expires_at`,[digest(token),client,allowDevelopmentFixtures]);
+   where s.token_hash=$1 and s.client=$2 and s.account_id=a.id and a.status='active' and s.expires_at>now() and s.absolute_expires_at>now() and (not a.is_development_fixture or $3) and not(a.id=any($4::uuid[])) and ($3 or (a.username<>'maidaan_admin' and a.email<>'maidaan.admin.demo@example.com')) returning s.account_id,s.expires_at`,[digest(token),client,allowDevelopmentFixtures,blockedIds]);
   if(!r.rows[0])throw new HttpError(401,'UNAUTHORIZED','Session expired. Sign in again.');
   return {userId:r.rows[0].account_id,sessionHash:digest(token),client,expiresAt:new Date(r.rows[0].expires_at).toISOString()};
  },

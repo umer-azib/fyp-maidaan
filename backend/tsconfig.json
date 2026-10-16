@@ -15,7 +15,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
-  "include": [
+  "include": ["index.ts",
     "src/**/*.ts",
     "../shared/contracts.ts",
     "../shared/games.ts",

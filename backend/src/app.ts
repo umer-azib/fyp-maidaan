@@ -1,3 +1,4 @@
+import { isVercel } from './runtime';
 import express, { type Request, type Response, type NextFunction, type Router } from 'express';
 import cors from 'cors';
 import { rateLimit } from 'express-rate-limit';
@@ -22,6 +23,7 @@ export function supabaseServices(url?:string,key?:string):Services {
 }
 export function createApp(services:Services,origins:string[]=['http://localhost:5173','http://127.0.0.1:5173'],application?:Router,databaseConfigured=false) {
  const app=express(); app.disable('x-powered-by');
+ if(isVercel())app.set('trust proxy',1);
  app.use((_req,res,next)=>{res.locals.requestId=randomUUID();res.setHeader('X-Request-Id',res.locals.requestId);res.setHeader('Cache-Control','no-store');res.setHeader('X-Content-Type-Options','nosniff');next();});
  app.use(cors({credentials:true,origin(origin,cb){if(!origin||origins.includes(origin))cb(null,true);else cb(new HttpError(403,'ORIGIN_DENIED','Origin is not allowed.'));}}));
  app.use(['/v1/me/avatar','/v1/hub/venues/:id/media'],express.json({limit:'8mb'}));

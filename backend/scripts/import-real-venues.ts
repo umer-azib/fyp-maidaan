@@ -1,3 +1,4 @@
+import { isProduction } from '../src/runtime';
 import 'dotenv/config';
 import {readFileSync,writeFileSync} from 'node:fs';
 import {z} from 'zod';
@@ -34,7 +35,7 @@ export async function importRealVenues(db:Database,records:z.infer<typeof record
  });
 }
 async function main(){
- if(process.env.NODE_ENV!=='development'||process.env.MAIDAAN_ENABLE_DIRECTORY_IMPORT!=='true')throw Error('Requires NODE_ENV=development and MAIDAAN_ENABLE_DIRECTORY_IMPORT=true. Production is forbidden.');
+ if(isProduction()||process.env.NODE_ENV!=='development'||process.env.MAIDAAN_ENABLE_DIRECTORY_IMPORT!=='true')throw Error('Requires NODE_ENV=development and MAIDAAN_ENABLE_DIRECTORY_IMPORT=true. Production is forbidden.');
  const args=process.argv.slice(2);if(args.length!==1||!['--check','--apply'].includes(args[0]))throw Error('Use --check or --apply.');if(!process.env.DATABASE_URL)throw Error('Configure DATABASE_URL.');
  const db=postgresDatabase(process.env.DATABASE_URL);try{const results=await importRealVenues(db,JSON.parse(readFileSync('data/lahore-real-venues.json','utf8')),args[0]==='--apply');console.log(JSON.stringify({status:args[0],venues:results.length,accounts:results.length},null,2));if(args[0]==='--apply')writeFileSync('../docs/LAHORE-VENUE-ACCOUNTS.md','# Lahore real venue FYP accounts\n\nDevelopment only. Password follows the existing fixture convention in docs/DEMO-DATA.md. All business ownership is unverified; public booking remains disabled. No admin permissions. Zero courts are invented.\n\n| Venue | Area | Demo username | Venue ID | Courts | Status |\n|---|---|---|---|---|---|\n'+results.map(v=>`| ${v.name} | ${v.area} | ${v.username} | ${v.venueId} | ${v.courts} | ${v.status} |`).join('\n')+'\n');}finally{await db.close()}
 }

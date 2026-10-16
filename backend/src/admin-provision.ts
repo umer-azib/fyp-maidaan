@@ -1,6 +1,7 @@
+import { isProduction } from './runtime';
 import type {Database} from './postgres';
 export async function provisionAdministrator(db:Database,email:string,environment:string|undefined,grant=false){
- if(environment!=='development')throw new Error('This administrator provisioning CLI is restricted to NODE_ENV=development.');
+ if(environment!=='development'||isProduction())throw new Error('Administrator provisioning requires local NODE_ENV=development and is disabled on Vercel.');
  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)||email.length>254)throw new Error('Supply the exact approved account email.');
  return db.transaction(async tx=>{
   const r=await tx.query<{id:string;status:string;password_hash:string|null;is_development_fixture:boolean;profile:boolean;admin:boolean}>(`select a.id,a.status,a.password_hash,a.is_development_fixture,exists(select 1 from public.profiles where id=a.id) profile,exists(select 1 from public.admin_memberships where user_id=a.id) admin from app_private.accounts a where a.email=$1 for update`,[email.trim().toLowerCase()]);

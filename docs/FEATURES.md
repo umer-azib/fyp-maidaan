@@ -1,3 +1,15 @@
+# Vercel backend deployment preparation - 2026-10-16
+
+| Feature | Role | Dependencies / API | Priority | Actual status |
+| --- | --- | --- | --- | --- |
+| Express serverless entry and shared contracts | Deployment operator | Root Express wrapper, src/index default app export, production tsconfig, Node 24 | P0 | Compiled entry/health HTTP smoke test passed; shared runtime imports resolve. No deployment performed. |
+| Production account isolation | All accounts / trusted operator | Existing private accounts/sessions; runtime deployment guard | P0 | Fixture and temporary-admin login AND old web/mobile sessions blocked on Vercel; regular account login/session/logout tested. Local development records retained. Hosted provisioning/import/seed disabled. |
+| Serverless DB lifecycle and notification fallback | Authenticated users | Small pg pool, verified TLS, Vercel pool lifecycle; existing notification API | P0 | Verified TLS required, 3 connections/instance, authenticated polling advertised; web uses 15-second fallback without SSE attempts. Isolated recipient/unauthenticated/polling tests passed; local SSE regressions passed. Hosted pooler/TLS and actual production cookies remain operator checks. |
+
+Verification: backend production build, TypeScript and lint passed; 35/35 backend tests passed, including isolated production-auth and compiled health/shared-import checks. Web lint and production build passed (existing bundle-size warning).
+
+Deployment instructions and limits: [VERCEL-BACKEND.md](VERCEL-BACKEND.md). No remote database writes or provisioning in this pass; no public deployment or browser visual verification claimed.
+
 # Final FYP directory / OSM / admin / Android checkpoint - 2026-10-16
 
 Latest evidence supersedes earlier map placeholders and unprovisioned-admin statements; all historical requested features remain below. [Final report](FINAL-FYP-INTEGRATION.md), [19 venue sources](LAHORE-REAL-VENUES.md), [FYP owner accounts](LAHORE-VENUE-ACCOUNTS.md).
